@@ -1,18 +1,7 @@
 import React, { useState } from 'react';
 
-interface SignUpProps {
-  onSubmit: (formData: SignUpFormData) => void;
-}
-
-interface SignUpFormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}
-
-const SignUp: React.FC<SignUpProps> = ({ onSubmit }) => {
-  const [formData, setFormData] = useState<SignUpFormData>({
+const SignUp: React.FC = () => {
+  const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
@@ -27,9 +16,32 @@ const SignUp: React.FC<SignUpProps> = ({ onSubmit }) => {
     }));
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    onSubmit(formData);
+
+    const { firstName, lastName, email, password } = formData;
+
+    try {
+      const response = await fetch('http://localhost:5000/api/user/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ firstName, lastName, email, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        // Handle success, e.g., redirect to a success page
+        console.log('Signup successful:', data);
+      } else {
+        // Handle error, e.g., display error message
+        const errorData = await response.json();
+        console.error('Signup failed:', errorData);
+      }
+    } catch (error) {
+      console.error('Signup failed:', error);
+    }
   };
 
   return (

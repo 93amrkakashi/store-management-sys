@@ -9,6 +9,10 @@ export default function Home() {
   return (
     <div>
       <SignIn />
+      <br />
+      <br />
+      <br />
+      <SignUp />
     </div>
   )
 }
