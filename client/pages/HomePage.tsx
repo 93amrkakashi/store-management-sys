@@ -1,181 +1,20 @@
 import React from "react";
-import Layout from "../components/Layout";
-import SignIn from "@/components/SignIn";
-import SignUp from "@/components/SignUp";
+
+import { useSelector } from "react-redux";
+import { RootState } from "@/rtk/store";
+import { useRouter } from "next/router";
+import SignIn from "./SignIn";
 
 const HomePage: React.FC = () => {
+  const router = useRouter()
+  const user = useSelector((state: RootState) => state.user);
+if(!user){
+  router.push("/SigiIn")
+}
   return (
     <>
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr /><br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr /><br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr /><br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr /><br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr /><br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr /><br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr /><br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-      <br />
-      <hr />
-    </>
+    {!user ? <SignIn /> : "kjgjhgjhg"}
+   </>
   );
 };
 

@@ -27,7 +27,7 @@ const SignIn: React.FC = () => {
 
       // Dispatch the setUser action to update the user state
       dispatch(setUser(user));
-      console.log(user)
+      localStorage.setItem('user', JSON.stringify(user));
 
       // Handle any necessary actions upon successful login
       console.log('Login successful', user);
