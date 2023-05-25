@@ -5,6 +5,7 @@ const cors = require('cors');
 
 
 const userRoutes = require('./routes/users')
+const productsRoutes = require('./routes/products')
 
 // express app
 const app = express();
@@ -18,7 +19,7 @@ app.use((req, res, next) => {
 app.use(cors());
 
 //routes
-// app.use("/api/sms", blogsRoutes);
+app.use("/api/products", productsRoutes);
 app.use('/api/user', userRoutes)
 
 mongoose
