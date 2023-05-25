@@ -45,10 +45,11 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="firstName">First Name:</label>
+    <form className="max-w-sm mx-auto bg-gray-800 text-white p-6 rounded-md" onSubmit={handleSubmit}>
+      <div className="mb-4">
+        <label className="block mb-2" htmlFor="firstName">First Name:</label>
         <input
+          className="w-full px-3 py-2 bg-gray-700 rounded-md"
           type="text"
           id="firstName"
           name="firstName"
@@ -57,9 +58,10 @@ const SignUp: React.FC = () => {
           required
         />
       </div>
-      <div>
-        <label htmlFor="lastName">Last Name:</label>
+      <div className="mb-4">
+        <label className="block mb-2" htmlFor="lastName">Last Name:</label>
         <input
+          className="w-full px-3 py-2 bg-gray-700 rounded-md"
           type="text"
           id="lastName"
           name="lastName"
@@ -68,9 +70,10 @@ const SignUp: React.FC = () => {
           required
         />
       </div>
-      <div>
-        <label htmlFor="email">Email:</label>
+      <div className="mb-4">
+        <label className="block mb-2" htmlFor="email">Email:</label>
         <input
+          className="w-full px-3 py-2 bg-gray-700 rounded-md"
           type="email"
           id="email"
           name="email"
@@ -79,9 +82,10 @@ const SignUp: React.FC = () => {
           required
         />
       </div>
-      <div>
-        <label htmlFor="password">Password:</label>
+      <div className="mb-4">
+        <label className="block mb-2" htmlFor="password">Password:</label>
         <input
+          className="w-full px-3 py-2 bg-gray-700 rounded-md"
           type="password"
           id="password"
           name="password"
@@ -90,9 +94,13 @@ const SignUp: React.FC = () => {
           required
         />
       </div>
-      <button type="submit">Sign Up</button>
+      <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md" type="submit">
+        Sign Up
+      </button>
     </form>
   );
+  
+  
 };
 
 export default SignUp;
