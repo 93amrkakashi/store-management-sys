@@ -13,26 +13,36 @@ const Login = () => {
   }
 
   return (
-    <form className="login" onSubmit={handleSubmit}>
-      <h3>Log In</h3>
-      
-      <label>Email address:</label>
-      <input 
-        type="email" 
-        onChange={(e) => setEmail(e.target.value)} 
-        value={email} 
+    <form className="login bg-gray-800 text-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+      <h3 className="text-2xl mb-4">Log In</h3>
+      <label className="block mb-2" htmlFor="email">Email address:</label>
+      <input
+        className="shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline text-gray-900"
+        id="email"
+        type="email"
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
       />
-      <label>Password:</label>
-      <input 
-        type="password" 
-        onChange={(e) => setPassword(e.target.value)} 
-        value={password} 
+      <label className="block mb-2" htmlFor="password">Password:</label>
+      <input
+        className="shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline text-gray-900"
+        id="password"
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
       />
-
-      <button disabled={isLoading}>Log in</button>
-      {error && <div className="error">{error}</div>}
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        disabled={isLoading}
+        type="submit"
+      >
+        Log in
+      </button>
+      {error && <div className="error mt-4 text-red-500">{error}</div>}
     </form>
-  )
+  );
+  
+  
 }
 
 export default Login

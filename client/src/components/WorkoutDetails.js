@@ -1,40 +1,56 @@
-import { useProductsContext} from '../hooks/useProductsContext'
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useProductsContext } from "../hooks/useProductsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 // date fns
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const WorkoutDetails = ({ product }) => {
-  const { dispatch } = useProductsContext()
-  const { user } = useAuthContext()
-console.log(product)
+  const { dispatch } = useProductsContext();
+  const { user } = useAuthContext();
+  console.log(product);
   const handleClick = async () => {
     if (!user) {
-      return
+      return;
     }
 
-    const response = await fetch('http://localhost:5000/api/products/' + product._id, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${user.token}`
+    const response = await fetch(
+      "http://localhost:5000/api/products/" + product._id,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
       }
-    })
-    const json = await response.json()
+    );
+    const json = await response.json();
 
     if (response.ok) {
-      dispatch({type: 'DELETE_PRODUCTS', payload: json})
+      dispatch({ type: "DELETE_PRODUCTS", payload: json });
     }
-  }
+  };
 
   return (
-    <div className="workout-details">
-      <h4>{product.name}</h4>
-      {/* <p><strong>Load (kg): </strong>{product.load}</p> */}
-      {/* <p><strong>Reps: </strong>{workout.reps}</p> */}
-      <p>{formatDistanceToNow(new Date(product.createdAt), { addSuffix: true })}</p>
-      <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
-    </div>
-  )
-}
+    
+  <tbody>
+    <tr key={product.id}>
+      <td className="px-4 py-2 border-b border-l">{product.name}</td>
+      <td className="px-4 py-2 border-b border-l">{product.initQty}</td>
+      <td className="px-4 py-2 border-b border-l">{product.currQty}</td>
+      <td className="px-4 py-2 border-b border-l">
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Edit
+        </button>
+      </td>
+      <td className="px-4 py-2 border-b border-l">
+        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
 
-export default WorkoutDetails
+
+  );
+};
+
+export default WorkoutDetails;
