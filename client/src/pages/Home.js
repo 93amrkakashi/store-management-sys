@@ -4,7 +4,7 @@ import { useAuthContext } from "../hooks/useAuthContext"
 
 // components
 import WorkoutDetails from '../components/WorkoutDetails'
-// import WorkoutForm from '../components/WorkoutForm'
+import ProductForm from '../components/ProductForm'
 
 const Home = () => {
   const {products, dispatch} = useProductsContext()
@@ -34,7 +34,7 @@ const Home = () => {
           <WorkoutDetails key={product._id} product={product} />
         ))}
       </div>
-      {/* <WorkoutForm /> */}
+      <ProductForm />
     </div>
   )
 }

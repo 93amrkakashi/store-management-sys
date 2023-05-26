@@ -7,7 +7,7 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 const WorkoutDetails = ({ product }) => {
   const { dispatch } = useProductsContext()
   const { user } = useAuthContext()
-
+console.log(product)
   const handleClick = async () => {
     if (!user) {
       return
