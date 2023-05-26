@@ -12,7 +12,7 @@ function App() {
   const { user } = useAuthContext()
 
   return (
-    <div className="App">
+    <div className="App w-[100vw]">
       <BrowserRouter>
         <Navbar />
         <div className="pages min-w-full h-[87vh] flex items-center justify-center">

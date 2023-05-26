@@ -28,16 +28,20 @@ const Home = () => {
   }, [dispatch, user])
 
   return (
-    <div className="home">
-      <div className="workouts">
-      <table className="min-w-full bg-gray-800 text-white text-left">
+    <div className="home min-w-full h-full overflow-y-scroll p-3">
+      <div className="workouts min-w-full min-h-full ">
+      <table className="min-w-full min-h-full bg-gray-800 text-white text-left ">
   <thead>
     <tr>
-      <th className="px-4 py-2 border-b border-l border-t ">Name</th>
-      <th className="px-4 py-2 border-b border-l border-t ">QTY</th>
-      <th className="px-4 py-2 border-b border-l border-t ">Avail</th>
-      <th className="px-4 py-2 border-b border-l border-t ">Edit</th>
-      <th className="px-4 py-2 border-b border-l border-t ">Delete</th>
+      <th className="px-4 py-2 border-b border-l border-t w-5/12	 ">Name</th>
+      <th className="px-4 py-2 border-b border-l border-t w-1/12	">Quantity</th>
+      <th className="px-4 py-2 border-b border-l border-t  w-1/12	">Available</th>
+      <th className="px-4 py-2 border-b border-l border-t  w-1/12	">IN</th>
+      <th className="px-4 py-2 border-b border-l border-t w-1/12	 ">OUT</th>
+      <th className="px-4 py-2 border-b border-l border-t  w-1/12	">Delete</th>
+      <th className="px-4 py-2 border-b border-l border-t  w-1/12	">Apply</th>
+      {/* <th className="px-4 py-2 border-b border-l border-t ">Edit</th>
+      <th className="px-4 py-2 border-b border-l border-t ">Delete</th> */}
     </tr>
   </thead>
         {products && products.map((product) => (
@@ -45,7 +49,7 @@ const Home = () => {
         ))}
         </table>
       </div>
-      <ProductForm />
+      {/* <ProductForm /> */}
     </div>
   )
 }

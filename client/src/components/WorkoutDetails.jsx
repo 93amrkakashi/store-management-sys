@@ -3,11 +3,19 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 // date fns
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { useState } from "react";
 
 const WorkoutDetails = ({ product }) => {
   const { dispatch } = useProductsContext();
   const { user } = useAuthContext();
-  const handleClick = async () => {
+  const [out, setout] = useState(0);
+  const [In, setIn] = useState(0);
+
+
+  const handleApply = () => {
+    // Handle apply action
+  };
+  const handleDelete = async () => {
     if (!user) {
       return;
     }
@@ -29,26 +37,45 @@ const WorkoutDetails = ({ product }) => {
   };
 
   return (
-    
-  <tbody>
-    <tr key={product.id}>
-      <td className="px-4 py-1 border-b border-l">{product.name}</td>
-      <td className="px-4 py-1 border-b border-l">{product.initQty}</td>
-      <td className="px-4 py-1 border-b border-l">{product.currQty}</td>
-      <td className="px-4 py-1 border-b border-l">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white  py-1 px-3 rounded">
-          Edit
-        </button>
-      </td>
-      <td className="px-4 py-1 border-b border-l">
-        <button className="bg-red-500 hover:bg-red-700 text-white  py-1 px-3 rounded">
-          Delete
-        </button>
-      </td>
-    </tr>
-  </tbody>
-
-
+    <tbody>
+      <tr key={product.id}>
+        <td className="px-4 py-1 border-b border-l">{product.name}</td>
+        <td className="px-4 py-1 border-b border-l">{product.initQty}</td>
+        <td className="px-4 py-1 border-b border-l">{product.currQty}</td>
+        <td className="px-4 py-1 border-b border-l">
+          <input
+            className="text-black w-20 font-bold"
+            type="number"
+            onChange={(e) => setout(e.target.value)}
+            value={out}
+          />
+        </td>
+        <td className="px-4 py-1 border-b border-l">
+          <input
+            className="text-black w-20 font-bold"
+            type="number"
+            onChange={(e) => setIn(e.target.value)}
+            value={In}
+          />
+        </td>
+        <td className="px-4 py-1 border-b border-l">
+          <button
+            onClick={handleDelete}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold  px-2 rounded mr-2"
+          >
+            Delete
+          </button>
+        </td>
+        <td className="px-4 py-1 border-b border-l">
+          <button
+            onClick={handleApply}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold  px-2 rounded"
+          >
+            Apply
+          </button>
+        </td>
+      </tr>
+    </tbody>
   );
 };
 
