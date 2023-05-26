@@ -1,27 +1,56 @@
 import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-
-// date fns
-import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useState } from "react";
 
 const WorkoutDetails = ({ product }) => {
   const { dispatch } = useProductsContext();
   const { user } = useAuthContext();
-  const [out, setout] = useState(0);
+  const [out, setOut] = useState(0);
   const [In, setIn] = useState(0);
 
+  const handleApply = async () => {
+    try {
+      const updatedData = {
+        initQty: product.initQty + Number(In),
+        currQty: product.currQty - Number(out),
+      };
 
-  const handleApply = () => {
-    // Handle apply action
+      const response = await fetch(
+        `http://localhost:5000/api/products/${product._id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+          body: JSON.stringify(updatedData),
+        }
+      );
+
+      if (response.ok) {
+        const updatedProduct = {
+          initQty: product.initQty + Number(In),
+          currQty: product.currQty - Number(out),
+        };
+        dispatch({ type: "UPDATE_PRODUCT", payload: updatedProduct });
+        setIn(0);
+        setOut(0);
+        console.log("Product updated successfully");
+      } else {
+        console.log("Error updating product", response);
+      }
+    } catch (error) {
+      console.log("Error:", error);
+    }
   };
+
   const handleDelete = async () => {
     if (!user) {
       return;
     }
 
     const response = await fetch(
-      "http://localhost:5000/api/products/" + product._id,
+      `http://localhost:5000/api/products/${product._id}`,
       {
         method: "DELETE",
         headers: {
@@ -32,13 +61,13 @@ const WorkoutDetails = ({ product }) => {
     const json = await response.json();
 
     if (response.ok) {
-      dispatch({ type: "DELETE_PRODUCTS", payload: json });
+      dispatch({ type: "DELETE_PRODUCT", payload: json });
     }
   };
 
   return (
     <tbody>
-      <tr key={product.id}>
+      <tr>
         <td className="px-4 py-1 border-b border-l">{product.name}</td>
         <td className="px-4 py-1 border-b border-l">{product.initQty}</td>
         <td className="px-4 py-1 border-b border-l">{product.currQty}</td>
@@ -46,16 +75,14 @@ const WorkoutDetails = ({ product }) => {
           <input
             className="text-black w-20 font-bold"
             type="number"
-            onChange={(e) => setout(e.target.value)}
-            value={out}
+            onChange={(e) => setIn(e.target.value)}
           />
         </td>
         <td className="px-4 py-1 border-b border-l">
           <input
             className="text-black w-20 font-bold"
             type="number"
-            onChange={(e) => setIn(e.target.value)}
-            value={In}
+            onChange={(e) => setOut(e.target.value)}
           />
         </td>
         <td className="px-4 py-1 border-b border-l">

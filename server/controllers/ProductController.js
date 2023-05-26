@@ -53,10 +53,11 @@ const deleteProduct = async(req, res) => {
 // update a Product
 const updateProduct = async(req, res) => { 
   const {id} = req.params 
-
-  if(!mongoose.Types.ObjectId.isValid(id)){
+  if(!mongoose.Types.ObjectId.isValid({id})){
     return res.status(400).json({error: "this Product does not exist"})
   }
+console.log(id)
+
   const Product = await Products.findOneAndUpdate({_id: id},{
     ...req.body
   })

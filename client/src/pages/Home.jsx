@@ -45,7 +45,7 @@ const Home = () => {
     </tr>
   </thead>
         {products && products.map((product) => (
-          <WorkoutDetails key={product._id} product={product} />
+          <WorkoutDetails key={product._id} product={product}  />
         ))}
         </table>
       </div>
