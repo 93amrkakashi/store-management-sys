@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { DropdownMenu } from './Drobdown'
 
 const Navbar = () => {
   const { logout } = useLogout()
@@ -20,12 +21,13 @@ console.log(user)
           {user && (
             <div className="flex items-center space-x-4">
               <span>{`${user.firstName} ${user.lastName}`}</span>
-              <button
+              {/* <button
                 className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 onClick={handleClick}
               >
                 Log out
-              </button>
+              </button> */}
+              <DropdownMenu />
             </div>
           )}
           {!user && (

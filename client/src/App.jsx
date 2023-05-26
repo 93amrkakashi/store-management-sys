@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <div className="pages">
+        <div className="pages min-w-full min-h-full flex align-center content-center">
           <Routes>
             <Route 
               path="/" 
