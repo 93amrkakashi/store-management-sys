@@ -7,7 +7,6 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 const WorkoutDetails = ({ product }) => {
   const { dispatch } = useProductsContext();
   const { user } = useAuthContext();
-  console.log(product);
   const handleClick = async () => {
     if (!user) {
       return;
@@ -33,16 +32,16 @@ const WorkoutDetails = ({ product }) => {
     
   <tbody>
     <tr key={product.id}>
-      <td className="px-4 py-2 border-b border-l">{product.name}</td>
-      <td className="px-4 py-2 border-b border-l">{product.initQty}</td>
-      <td className="px-4 py-2 border-b border-l">{product.currQty}</td>
-      <td className="px-4 py-2 border-b border-l">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <td className="px-4 py-1 border-b border-l">{product.name}</td>
+      <td className="px-4 py-1 border-b border-l">{product.initQty}</td>
+      <td className="px-4 py-1 border-b border-l">{product.currQty}</td>
+      <td className="px-4 py-1 border-b border-l">
+        <button className="bg-blue-500 hover:bg-blue-700 text-white  py-1 px-3 rounded">
           Edit
         </button>
       </td>
-      <td className="px-4 py-2 border-b border-l">
-        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+      <td className="px-4 py-1 border-b border-l">
+        <button className="bg-red-500 hover:bg-red-700 text-white  py-1 px-3 rounded">
           Delete
         </button>
       </td>

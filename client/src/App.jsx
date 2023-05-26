@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 function App() {
   const { user } = useAuthContext()
@@ -14,7 +15,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <div className="pages min-w-full min-h-full flex align-center content-center">
+        <div className="pages min-w-full h-[87vh] flex items-center justify-center">
           <Routes>
             <Route 
               path="/" 
@@ -30,6 +31,7 @@ function App() {
             />
           </Routes>
         </div>
+        <Footer />
       </BrowserRouter>
     </div>
   );
