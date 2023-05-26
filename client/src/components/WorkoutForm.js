@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
+import { useWorkoutsContext } from "../hooks/useProductsContext"
 import { useAuthContext } from '../hooks/useAuthContext'
 
 const WorkoutForm = () => {
@@ -42,7 +42,7 @@ const WorkoutForm = () => {
       setReps('')
       setError(null)
       setEmptyFields([])
-      dispatch({type: 'CREATE_WORKOUT', payload: json})
+      dispatch({type: 'CREATE_PRODUCTS', payload: json})
     }
   }
 
