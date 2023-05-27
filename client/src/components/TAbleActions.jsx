@@ -2,7 +2,7 @@ import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useState } from "react";
 
-const WorkoutDetails = ({ product }) => {
+const TAbleActions = ({ product }) => {
   const { dispatch } = useProductsContext();
   const { user } = useAuthContext();
   const [out, setOut] = useState(0);
@@ -106,4 +106,4 @@ const WorkoutDetails = ({ product }) => {
   );
 };
 
-export default WorkoutDetails;
+export default TAbleActions;
