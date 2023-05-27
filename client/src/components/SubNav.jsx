@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaSearch, FaSync } from "react-icons/fa";
 
-const SubNav = ({ products, setFelterdProducts, fetchProducts }) => {
+const SubNav = ({ products, setFelterdProducts, fetchProducts , setadd, add}) => {
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearchChange = () => {
@@ -20,7 +20,9 @@ const SubNav = ({ products, setFelterdProducts, fetchProducts }) => {
   };
   return (
     <nav className="bg-gray-900 py-4 px-6 flex justify-between items-center">
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <button
+      onClick={() => setadd(!add)}
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Add a Product
       </button>
       <button

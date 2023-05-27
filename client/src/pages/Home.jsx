@@ -3,11 +3,14 @@ import SubNav from "../components/SubNav";
 import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useEffect, useState } from "react";
+import ProductForm from "../components/ProductForm";
 
 const Home = () => {
   const { products, dispatch } = useProductsContext();
   const { user } = useAuthContext();
   const [filterdProducts, setFelterdProducts] = useState(null);
+  const [add, setadd] = useState(false);
+
   const fetchProducts = async () => {
     const response = await fetch("http://localhost:5000/api/products", {
       headers: { Authorization: `Bearer ${user.token}` },
@@ -31,6 +34,8 @@ const Home = () => {
         products={products}
         setFelterdProducts={setFelterdProducts}
         filterdProducts={filterdProducts}
+        setadd={setadd}
+        add={add}
       />
       <Table
         fetchProducts={fetchProducts}
@@ -38,7 +43,7 @@ const Home = () => {
         filterdProducts={filterdProducts}
         setFelterdProducts={setFelterdProducts}
       />
-      {/* <ProductForm /> */}
+      <ProductForm add={add} setadd={setadd} fetchProducts={fetchProducts} />
     </div>
   );
 };
