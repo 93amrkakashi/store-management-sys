@@ -2,12 +2,11 @@ import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useEffect, useState } from "react";
 
-const TAbleActions = ({ product , fetchProducts, setFelterdProducts}) => {
+const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
   const { dispatch } = useProductsContext();
   const { user } = useAuthContext();
-  const [out, setOut] = useState('');
-  const [In, setIn] = useState('');
-  
+  const [out, setOut] = useState("");
+  const [In, setIn] = useState("");
 
   const handleApply = async () => {
     try {
@@ -34,10 +33,10 @@ const TAbleActions = ({ product , fetchProducts, setFelterdProducts}) => {
           currQty: product.currQty - Number(out),
         };
         dispatch({ type: "UPDATE_PRODUCT", payload: updatedProduct });
-        setIn('');
-        setOut('');
-        setFelterdProducts('')
-        fetchProducts()
+        setIn("");
+        setOut("");
+        setFelterdProducts("");
+        fetchProducts();
         console.log("Product updated successfully");
       } else {
         console.log("Error updating product", response);
@@ -68,10 +67,8 @@ const TAbleActions = ({ product , fetchProducts, setFelterdProducts}) => {
     }
   };
 
-  useEffect(() => {
-    
-  }, [dispatch])
-  
+  useEffect(() => {}, [dispatch]);
+
   return (
     <tbody>
       <tr>
@@ -80,7 +77,7 @@ const TAbleActions = ({ product , fetchProducts, setFelterdProducts}) => {
         <td className="px-4 py-1 border-b border-l">{product.currQty}</td>
         <td className="px-4 py-1 border-b border-l">
           <input
-          value={In}
+            value={In}
             className="text-black w-20 font-bold"
             type="number"
             onChange={(e) => setIn(e.target.value)}
@@ -88,7 +85,7 @@ const TAbleActions = ({ product , fetchProducts, setFelterdProducts}) => {
         </td>
         <td className="px-4 py-1 border-b border-l">
           <input
-          value={out}
+            value={out}
             className="text-black w-20 font-bold"
             type="number"
             onChange={(e) => setOut(e.target.value)}
