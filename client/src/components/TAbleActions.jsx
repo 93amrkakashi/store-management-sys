@@ -1,12 +1,13 @@
 import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const TAbleActions = ({ product }) => {
+const TAbleActions = ({ product , fetchProducts, setFelterdProducts}) => {
   const { dispatch } = useProductsContext();
   const { user } = useAuthContext();
-  const [out, setOut] = useState(0);
-  const [In, setIn] = useState(0);
+  const [out, setOut] = useState('');
+  const [In, setIn] = useState('');
+  
 
   const handleApply = async () => {
     try {
@@ -33,8 +34,10 @@ const TAbleActions = ({ product }) => {
           currQty: product.currQty - Number(out),
         };
         dispatch({ type: "UPDATE_PRODUCT", payload: updatedProduct });
-        setIn(0);
-        setOut(0);
+        setIn('');
+        setOut('');
+        setFelterdProducts('')
+        fetchProducts()
         console.log("Product updated successfully");
       } else {
         console.log("Error updating product", response);
@@ -65,6 +68,10 @@ const TAbleActions = ({ product }) => {
     }
   };
 
+  useEffect(() => {
+    
+  }, [dispatch])
+  
   return (
     <tbody>
       <tr>
@@ -73,6 +80,7 @@ const TAbleActions = ({ product }) => {
         <td className="px-4 py-1 border-b border-l">{product.currQty}</td>
         <td className="px-4 py-1 border-b border-l">
           <input
+          value={In}
             className="text-black w-20 font-bold"
             type="number"
             onChange={(e) => setIn(e.target.value)}
@@ -80,6 +88,7 @@ const TAbleActions = ({ product }) => {
         </td>
         <td className="px-4 py-1 border-b border-l">
           <input
+          value={out}
             className="text-black w-20 font-bold"
             type="number"
             onChange={(e) => setOut(e.target.value)}

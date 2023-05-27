@@ -4,26 +4,8 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import ProductForm from "../components/ProductForm";
 import TAbleActions from "./TAbleActions";
 
-const Table = () => {
-  const { products, dispatch } = useProductsContext();
-  const { user } = useAuthContext();
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await fetch("http://localhost:5000/api/products", {
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
-      const json = await response.json();
-
-      if (response.ok) {
-        dispatch({ type: "SET_PRODUCTS", payload: json });
-      }
-    };
-
-    if (user) {
-      fetchProducts();
-    }
-  }, [dispatch, user]);
+const Table = ({products, filterdProducts, fetchProducts, setFelterdProducts}) => {
+  
 
   return (
       <div className=" min-w-full min-h-full ">
@@ -53,9 +35,11 @@ const Table = () => {
               </th>
             </tr>
           </thead>
-          {products &&
-            products.map((product) => (
-              <TAbleActions key={product._id} product={product} />
+          {!filterdProducts ?
+            products?.map((product) => (
+              <TAbleActions key={product._id} product={product} fetchProducts={fetchProducts} setFelterdProducts={setFelterdProducts}/>
+            )): filterdProducts?.map((product) => (
+              <TAbleActions key={product._id} product={product} fetchProducts={fetchProducts} setFelterdProducts={setFelterdProducts}/>
             ))}
         </table>
       </div>
