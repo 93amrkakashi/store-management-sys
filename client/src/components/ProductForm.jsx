@@ -80,7 +80,7 @@ const ProductForm = ({add, setadd, fetchProducts}) => {
       />
 
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Add Workout
+        Add Product
         </button>
       {error && <div className="error">{error}</div>}
     </form>
