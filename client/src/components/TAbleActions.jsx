@@ -26,6 +26,7 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
     };
     
     if (In) {
+      updatedData.currQty = product.currQty + Number(In);
       updatedData.in = [...product.in, In];
       updatedData.inDate = [...product.inDate, product.updatedAt];
     }
@@ -36,6 +37,7 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
     }
     
     if (In && out) {
+      updatedData.currQty = product.currQty + Number(In);
       updatedData.in = [...product.in, In];
       updatedData.inDate = [...product.inDate, product.updatedAt];
       updatedData.out = [...product.out, out];
