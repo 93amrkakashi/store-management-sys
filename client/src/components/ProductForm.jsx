@@ -13,7 +13,9 @@ const ProductForm = ({add, setadd, fetchProducts}) => {
   const [out, setout] = useState(0);
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
-
+ const userName = `${user?.firstName} ${user?.lastName}`
+// console.log(user)
+// console.log(userName)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -22,7 +24,7 @@ const ProductForm = ({add, setadd, fetchProducts}) => {
       return;
     }
 
-    const Product = { name, description, initQty };
+    const Product = { name, description, initQty, creator:userName, modifier:userName };
 
     const response = await fetch("http://localhost:5000/api/products", {
       method: "POST",
