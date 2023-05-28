@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import OutChart from "./OutChart";
 import InChart from "./InChart";
 import ProductTable from "./ProductTable";
+import { format } from "date-fns";
 
 
 const ProductDetails = () => {
@@ -21,7 +22,10 @@ const ProductDetails = () => {
 
       // Prepare chart data based on product data
       const chartOut = {
-        labels: [...productData?.outDate],
+        labels: [...productData?.outDate.map((date) => format(
+          new Date(date),
+          "dd/MM/yyyy"
+        ))],
         datasets: [
           {
             label: "OUT",
@@ -35,7 +39,14 @@ const ProductDetails = () => {
       setoutData(chartOut);
       
       const chartIn = {
-        labels: [...productData?.inDate],
+        // format(
+        //   new Date(product.inDate[index]),
+        //   "EEEE - dd/MM/yyyy - 'at' hh:mm a"
+        // )
+        labels: [...productData?.inDate.map((date) => format(
+          new Date(date),
+          "dd/MM/yyyy"
+        ))],
         datasets: [
           {
             label: "IN",
