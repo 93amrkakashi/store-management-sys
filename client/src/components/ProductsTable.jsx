@@ -4,7 +4,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import ProductForm from "../components/ProductForm";
 import TAbleActions from "./TAbleActions";
 
-const Table = ({
+const ProductsTable = ({
   products,
   filterdProducts,
   fetchProducts,
@@ -55,8 +55,7 @@ const Table = ({
             ))}
       </table>
     </div>
-    // {/* <ProductForm /> */}
   );
 };
 
-export default Table;
+export default ProductsTable;

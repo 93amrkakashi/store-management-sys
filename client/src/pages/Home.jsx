@@ -1,9 +1,9 @@
-import Table from "../components/Table";
 import SubNav from "../components/SubNav";
 import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useEffect, useState } from "react";
 import ProductForm from "../components/ProductForm";
+import ProductsTable from "../components/ProductsTable";
 
 const Home = () => {
   const { products, dispatch } = useProductsContext();
@@ -37,7 +37,7 @@ const Home = () => {
         setadd={setadd}
         add={add}
       />
-      <Table
+      <ProductsTable
         fetchProducts={fetchProducts}
         products={products}
         filterdProducts={filterdProducts}

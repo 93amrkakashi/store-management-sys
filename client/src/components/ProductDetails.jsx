@@ -3,6 +3,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useParams } from "react-router-dom";
 import OutChart from "./OutChart";
 import InChart from "./InChart";
+import ProductTable from "./ProductTable";
 
 
 const ProductDetails = () => {
@@ -84,6 +85,9 @@ const ProductDetails = () => {
       <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
         {outData && <OutChart outData={outData} />}
         {inData && <InChart inData={inData} />}
+      </div>
+      <div className="charts  min-w-full mx-auto px-4 py-8 ">
+      <ProductTable product={product} />
       </div>
     </div>
   );

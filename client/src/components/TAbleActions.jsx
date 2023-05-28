@@ -10,7 +10,6 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
   const [In, setIn] = useState("");
  const userName = `${user?.firstName} ${user?.lastName}`
 
-  console.log(product);
   const handleApply = async () => {
     // const updatedData = {
     //   initQty: product.initQty + Number(In),
