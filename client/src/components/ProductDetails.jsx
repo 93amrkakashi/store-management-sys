@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useParams } from "react-router-dom";
-import BarChart from './BarChart'
+import OutChart from "./OutChart";
+import InChart from "./InChart";
+
 
 const ProductDetails = () => {
   const { id } = useParams();
   const { user } = useAuthContext();
   const [product, setProduct] = useState(null);
-  const [userData, setUserData] = useState(null);
+  const [outData, setoutData] = useState(null);
+  const [inData, setinData] = useState(null);
 
   const fetchProduct = async () => {
     try {
@@ -16,7 +19,7 @@ const ProductDetails = () => {
       setProduct(productData);
 
       // Prepare chart data based on product data
-      const chartData = {
+      const chartOut = {
         labels: [...productData?.outDate],
         datasets: [
           {
@@ -28,7 +31,21 @@ const ProductDetails = () => {
           },
         ],
       };
-      setUserData(chartData);
+      setoutData(chartOut);
+      
+      const chartIn = {
+        labels: [...productData?.inDate],
+        datasets: [
+          {
+            label: "IN",
+            data: [...productData?.in],
+            backgroundColor: "green",
+            borderColor: "black",
+            borderWidth: 2,
+          },
+        ],
+      };
+      setinData(chartIn);
     } catch (error) {
       console.error("Error fetching product:", error);
     }
@@ -64,8 +81,9 @@ const ProductDetails = () => {
           {product.currQty}
         </p>
       </div>
-      <div className="charts min-w-full mx-auto px-4 py-8 bg-gray-200 text-white">
-        {userData && <BarChart userData={userData} />}
+      <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
+        {outData && <OutChart outData={outData} />}
+        {inData && <InChart inData={inData} />}
       </div>
     </div>
   );
