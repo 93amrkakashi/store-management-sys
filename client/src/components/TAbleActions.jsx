@@ -1,13 +1,13 @@
 import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useEffect, useState } from "react";
-
+import { format, parseISO } from 'date-fns';
 const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
   const { dispatch } = useProductsContext();
   const { user } = useAuthContext();
   const [out, setOut] = useState("");
   const [In, setIn] = useState("");
-
+console.log(product)
   const handleApply = async () => {
     try {
       const updatedData = {
@@ -66,6 +66,11 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
       dispatch({ type: "DELETE_PRODUCT", payload: json });
     }
   };
+
+  
+  // const date = parseISO(product.updatedAt);
+  // const dayOfWeek = format(date, 'EEEE');
+  // const formattedDate = format(date, `'${dayOfWeek}' - dd/MM/yyyy - 'at' h:mm:ss a`);  
 
   useEffect(() => {}, [dispatch]);
 
