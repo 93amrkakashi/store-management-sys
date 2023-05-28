@@ -1,15 +1,11 @@
 import { format } from "date-fns";
 import React from "react";
 
-const ProductTable = ({ product }) => {
-  console.log(product);
-  // const date = parseISO(product.updatedAt);
-  // const dayOfWeek = format(date, 'EEEE');
-  // const formattedDate = format(date, `'${dayOfWeek}' - dd/MM/yyyy - 'at' h:mm:ss a`);
+export const TableP = ({product, title}) =>{
 
   return (
     <div>
-      <h2>Out</h2>
+      <h2>{title.toUpperCase()}</h2>
       <table className="min-w-full min-h-full bg-gray-800 text-white text-left ">
         <thead>
           <tr>
@@ -32,7 +28,7 @@ const ProductTable = ({ product }) => {
         </thead>
 
         <tbody>
-          {product.out.map((item, index) => (
+          {title === 'out' ? product.out.map((item, index) => (
             <tr key={index}>
               <td className="px-4 py-2 border-b border-l">{index + 1}</td>
               <td className="px-4 py-2 border-b border-l">
@@ -47,10 +43,44 @@ const ProductTable = ({ product }) => {
                 {product.modifier[index]}
               </td>
             </tr>
-          ))}
+          )):
+          product.in.map((item, index) => (
+            <tr key={index}>
+              <td className="px-4 py-2 border-b border-l">{index + 1}</td>
+              <td className="px-4 py-2 border-b border-l">
+                {format(
+                  new Date(product.inDate[index]),
+                  "EEEE - dd/MM/yyyy - 'at' hh:mm a"
+                )}
+              </td>{" "}
+              {/* <td className="px-4 py-2 border-b border-l">Quantity In Value</td> */}
+              <td className="px-4 py-2 border-b border-l">{item}</td>
+              <td className="px-4 py-2 border-b border-l">
+                {product.modifier[index]}
+              </td>
+            </tr>
+          ))
+          }
         </tbody>
       </table>
     </div>
+  );
+
+}
+
+
+
+const ProductTable = ({ product }) => {
+  console.log(product);
+  // const date = parseISO(product.updatedAt);
+  // const dayOfWeek = format(date, 'EEEE');
+  // const formattedDate = format(date, `'${dayOfWeek}' - dd/MM/yyyy - 'at' h:mm:ss a`);
+
+  return (
+  <>
+  <TableP product={product} title={'out'}/>
+  <TableP product={product}title={'in'}/>
+  </>
   );
 };
 
