@@ -119,7 +119,7 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
         )}
         <td className="px-4 py-1 border-b border-l">{product.initQty}</td>
         <td className="px-4 py-1 border-b border-l">{product.currQty}</td>
-        {!user.owner && (
+        {user.owner && (
           <>
             <td className="px-4 py-1 border-b border-l">
               <input

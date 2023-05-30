@@ -15,7 +15,7 @@ const Users = () => {
   }, []);
 
   return (
-    <div className="min-w-full h-full overflow-y-scroll p-3 flex items-center justify-center flex-wrap gap-3">
+    <div className="min-w-full h-full overflow-y-scroll p-3 flex  justify-center flex-wrap gap-5">
       {user.owner ? (
         <>
           {users.map((user) => (
@@ -24,6 +24,9 @@ const Users = () => {
                 <h2 className="text-lg font-bold mb-2">
                   {`Name : ${user.firstName} ${user.lastName}`}
                 </h2>
+                <p className="text-lg font-semibold mb-2">{`Owner : ${
+                  user.owner === 'true' ? 'Yes' : 'No'
+                }`}</p>
                 <p className="text-lg font-semibold mb-2">{`Admin : ${
                   user.admin === 'true' ? 'Yes' : 'No'
                 }`}</p>

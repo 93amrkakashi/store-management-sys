@@ -27,7 +27,7 @@ const ProductsTable = ({
               Available
             </th>
 
-            {!user.owner &&
+            {user.owner &&
             <>
             <th className="px-4 py-2 border-b border-l border-t  w-1/12	">IN</th>
             <th className="px-4 py-2 border-b border-l border-t w-1/12	 ">

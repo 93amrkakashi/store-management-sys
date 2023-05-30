@@ -26,7 +26,7 @@ const Home = () => {
     if (user) {
       fetchProducts();
     }
-  }, [dispatch, user, filterdProducts]);
+  }, [dispatch, user, filterdProducts,]);
 
   return (
     <div className="min-w-full h-full overflow-y-scroll p-3">
