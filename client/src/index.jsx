@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { AuthContextProvider } from './context/AuthContext'
 import { ProductsContextProvider } from './context/ProductContext';
+import * as registerServiceWorker from "./serviceWorkerRegistration";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,3 +16,6 @@ root.render(
     </AuthContextProvider>
   </React.StrictMode>
 );
+
+
+registerServiceWorker.register();
