@@ -14,7 +14,8 @@ const navigate = useNavigate()
   };
 
   const handleItemClick = (item) => {
-    // Handle item click here
+    // setIsOpen(false);
+    // navigate('/admin')
     console.log("Clicked:", item);
   };
 
@@ -30,7 +31,10 @@ const navigate = useNavigate()
         <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg">
           <p>
             <p
-              onClick={() => navigate('/admin')}
+              onClick={() => {
+                navigate('/admin')
+                handleToggle()
+              }}
               className=" px-4 py-2 hover:bg-gray-100 cursor-pointer text-black"
             >
               Admin Panel 

@@ -1,5 +1,6 @@
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
+const mongoose = require("mongoose");
 
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: '3d' });
@@ -40,4 +41,25 @@ const signupUser = async (req, res) => {
   }
 };
 
-module.exports = { signupUser, loginUser };
+
+// get all users
+const getUsers = async (req, res) => {
+  const users = await User.find({});
+  res.status(200).json(users);
+};
+
+
+// get a user
+const getUser = async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "this user does not exist" });
+  }
+  if (!user) {
+    return res.status(400).json({ error: "this user does not exist" });
+  }
+  res.status(200).json(user);
+};
+
+module.exports = { signupUser, loginUser, getUsers, getUser };

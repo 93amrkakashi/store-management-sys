@@ -26,7 +26,8 @@ const Navbar = () => {
               >
                 Log out
               </button> */}
-              <DropdownMenu />
+
+              {user.owner && <DropdownMenu />}
             </div>
           )}
           {!user && (
