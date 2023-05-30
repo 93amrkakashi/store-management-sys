@@ -33,14 +33,14 @@ export const TableP = ({product, title}) =>{
               <td className="px-4 py-2 border-b border-l">{index + 1}</td>
               <td className="px-4 py-2 border-b border-l">
                 {format(
-                  new Date(product.outDate[index]),
+                  new Date(item.split("@")[1][index]),
                   "EEEE - dd/MM/yyyy - 'at' hh:mm a"
                 )}
               </td>{" "}
               {/* <td className="px-4 py-2 border-b border-l">Quantity In Value</td> */}
-              <td className="px-4 py-2 border-b border-l">{item}</td>
+              <td className="px-4 py-2 border-b border-l">{item.split("@")[0]}</td>
               <td className="px-4 py-2 border-b border-l">
-                {product.modifier[index]}
+                {item.split("@")[2]}
               </td>
             </tr>
           )):
@@ -49,14 +49,14 @@ export const TableP = ({product, title}) =>{
               <td className="px-4 py-2 border-b border-l">{index + 1}</td>
               <td className="px-4 py-2 border-b border-l">
                 {format(
-                  new Date(product.inDate[index]),
+                  new Date(item.split("@")[1][index]),
                   "EEEE - dd/MM/yyyy - 'at' hh:mm a"
                 )}
               </td>{" "}
               {/* <td className="px-4 py-2 border-b border-l">Quantity In Value</td> */}
-              <td className="px-4 py-2 border-b border-l">{item}</td>
+              <td className="px-4 py-2 border-b border-l">{item.split("@")[0]}</td>
               <td className="px-4 py-2 border-b border-l">
-                {product.modifier[index]}
+                {item.split("@")[2]}
               </td>
             </tr>
           ))

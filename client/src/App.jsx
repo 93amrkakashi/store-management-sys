@@ -27,19 +27,19 @@ function App() {
             />
             <Route
               path="/admin"
-              element={user ? <Admin /> : <Navigate to="/login" />}
+              element={user && <Admin />  }
             />
             <Route
               path="/admin/users"
-              element={user ? <Users /> : <Navigate to="/login" />}
+              element={user && <Users /> }
             />
             <Route
               path="/admin/charts"
-              element={user ? <MainCharts /> : <Navigate to="/login" />}
+              element={user && <MainCharts /> }
             />
             <Route
-              path="/api/products/:id"
-              element={user ? <ProductDetails /> : <Navigate to="/login" />}
+              path="/products/:id"
+              element={user && <ProductDetails /> }
             />
             <Route
               path="/login"

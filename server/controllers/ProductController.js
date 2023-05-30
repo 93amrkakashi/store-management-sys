@@ -31,12 +31,11 @@ const createProduct = async (req, res) => {
       description,
       initQty,
       currQty: initQty,
-      in:0,
-      out: 0,
-      inDate: formatISO(Date.now(), { representation: "complete" }),
-      outDate: formatISO(Date.now(), { representation: "complete" }),
+      // in:null,
+      // out:null,
+    
       creator,
-      modifier,
+
 
     });
     res.status(200).json(Product);

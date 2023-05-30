@@ -21,28 +21,34 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
     const updatedData = {
       initQty: product.initQty + Number(In),
       currQty: product.currQty - Number(out),
-      modifier: [...product.modifier, userName],
     };
 
     if (In) {
       updatedData.currQty = product.currQty + Number(In);
-      updatedData.in = [...product.in, In];
-      updatedData.inDate = [...product.inDate, product.updatedAt];
+      updatedData.in = [
+        ...product.in,
+        `${In}@${product.updatedAt}@${userName}`,
+      ];
     }
 
     if (out) {
-      updatedData.out = [...product.out, out];
-      updatedData.outDate = [...product.outDate, product.updatedAt];
+      updatedData.out = [
+        ...product.out,
+        `${out}@${product.updatedAt}@${userName}`,
+      ];
     }
 
     if (In && out) {
       updatedData.currQty = product.currQty + Number(In);
-      updatedData.in = [...product.in, In];
-      updatedData.inDate = [...product.inDate, product.updatedAt];
-      updatedData.out = [...product.out, out];
-      updatedData.outDate = [...product.outDate, product.updatedAt];
+      updatedData.in = [
+        ...product.in,
+        `${In}@${product.updatedAt}@${userName}`,
+      ];
+      updatedData.out = [
+        ...product.out,
+        `${out}@${product.updatedAt}@${userName}`,
+      ];
     }
-
     //
     try {
       const response = await fetch(
@@ -62,9 +68,9 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
           initQty: product.initQty + Number(In),
           currQty: product.currQty - Number(out),
           out: [...product.out, out],
-          outDate: [...product.outDate, product.updatedAt],
+          // outDate: [...product.outDate, product.updatedAt],
           in: [...product.in, In],
-          inDate: [...product.inDate, product.updatedAt],
+          // inDate: [...product.inDate, product.updatedAt],
         };
         dispatch({ type: "UPDATE_PRODUCT", payload: updatedProduct });
         setIn("");
@@ -112,7 +118,7 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
       <tr>
         {user.owner ? (
           <td className="px-4 py-1 border-b border-l">
-            <Link to={`/api/products/${product._id}`}>{product.name}</Link>
+            <Link to={`/products/${product._id}`}>{product.name}</Link>
           </td>
         ) : (
           <td className="px-4 py-1 border-b border-l">{product.name}</td>

@@ -20,29 +20,19 @@ const productSchema = new Schema({
     required: true
   },
   in:{
-    type: [Number],
-    required: true
+    type: [String],
+    // required: true
   },
   out:{
-    type: [Number],
-    required: true
+    type: [String],
+    // required: true
   },
-  inDate:{
-    type:[String],
-    required:true
-  },
-  outDate:{
-    type:[String],
-    required:true
-  },
+  
   creator:{
     type: String,
     required: true
   },
-  modifier:{
-    type: [String],
-    required: true
-  },
+
 
 }, {timestamps: true});
 

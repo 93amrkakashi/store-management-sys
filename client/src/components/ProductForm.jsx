@@ -24,7 +24,7 @@ const ProductForm = ({add, setadd, fetchProducts}) => {
       return;
     }
 
-    const Product = { name, description, initQty, creator:userName, modifier:userName };
+    const Product = { name, description, initQty, creator:userName};
 
     const response = await fetch("http://localhost:5000/api/products", {
       method: "POST",

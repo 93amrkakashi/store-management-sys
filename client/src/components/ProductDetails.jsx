@@ -22,14 +22,14 @@ const ProductDetails = () => {
 
       // Prepare chart data based on product data
       const chartOut = {
-        labels: [...productData?.outDate.map((date) => format(
-          new Date(date),
+        labels: [...productData?.out?.map((date) => format(
+          new Date(date?.split("@")[1]),
           "dd/MM/yyyy"
         ))],
         datasets: [
           {
             label: "OUT",
-            data: [...productData?.out],
+            data: [...productData?.out?.map((date) => date.split("@")[0])],
             backgroundColor: "red",
             borderColor: "black",
             borderWidth: 2,
@@ -43,14 +43,14 @@ const ProductDetails = () => {
         //   new Date(product.inDate[index]),
         //   "EEEE - dd/MM/yyyy - 'at' hh:mm a"
         // )
-        labels: [...productData?.inDate.map((date) => format(
-          new Date(date),
+        labels: [...productData?.in?.map((date) => format(
+          new Date(date?.split("@")[1]),
           "dd/MM/yyyy"
         ))],
         datasets: [
           {
             label: "IN",
-            data: [...productData?.in],
+            data: [...productData?.in?.map((date) => date.split("@")[0])],
             backgroundColor: "green",
             borderColor: "black",
             borderWidth: 2,

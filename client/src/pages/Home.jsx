@@ -10,7 +10,6 @@ const Home = () => {
   const { user } = useAuthContext();
   const [filterdProducts, setFelterdProducts] = useState(null);
   const [add, setadd] = useState(false);
-  console.log(user);
 
   const fetchProducts = async () => {
     const response = await fetch("http://localhost:5000/api/products", {
