@@ -18,7 +18,7 @@ const Signup = () => {
     <form className="signup bg-gray-800 text-white px-8 py-8 rounded" onSubmit={handleSubmit}>
       <h3 className="text-2xl mb-4">Sign Up</h3>
       <label className="block mb-2" htmlFor="firstName">First Name:</label>
-      <input
+      <input  name="inbut"  
         className="shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline text-gray-900"
         id="firstName"
         type="text"
@@ -26,7 +26,7 @@ const Signup = () => {
         value={firstName}
       />
       <label className="block mb-2" htmlFor="lastName">Last Name:</label>
-      <input
+      <input  name="inbut"  
         className="shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline text-gray-900"
         id="lastName"
         type="text"
@@ -34,7 +34,7 @@ const Signup = () => {
         value={lastName}
       />
       <label className="block mb-2" htmlFor="email">Email address:</label>
-      <input
+      <input  name="inbut"  
         className="shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline text-gray-900"
         id="email"
         type="email"
@@ -42,7 +42,7 @@ const Signup = () => {
         value={email}
       />
       <label className="block mb-2" htmlFor="password">Password:</label>
-      <input
+      <input  name="inbut"  
         className="shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline text-gray-900"
         id="password"
         type="password"

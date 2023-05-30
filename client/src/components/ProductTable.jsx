@@ -71,7 +71,6 @@ export const TableP = ({product, title}) =>{
 
 
 const ProductTable = ({ product }) => {
-  console.log(product);
   // const date = parseISO(product.updatedAt);
   // const dayOfWeek = format(date, 'EEEE');
   // const formattedDate = format(date, `'${dayOfWeek}' - dd/MM/yyyy - 'at' h:mm:ss a`);

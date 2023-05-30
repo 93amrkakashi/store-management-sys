@@ -16,7 +16,7 @@ const Login = () => {
     <form className="login bg-gray-800 text-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
       <h3 className="text-2xl mb-4">Log In</h3>
       <label className="block mb-2" htmlFor="email">Email address:</label>
-      <input
+      <input  name="inbut"  
         className="shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline text-gray-900"
         id="email"
         type="email"
@@ -24,7 +24,7 @@ const Login = () => {
         value={email}
       />
       <label className="block mb-2" htmlFor="password">Password:</label>
-      <input
+      <input  name="inbut"  
         className="shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline text-gray-900"
         id="password"
         type="password"

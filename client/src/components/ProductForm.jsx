@@ -58,7 +58,7 @@ const ProductForm = ({add, setadd, fetchProducts}) => {
       <h3 className="text-center font-bold">Add a New Product</h3>
 
       <label>Product name:</label>
-      <input
+      <input  name="inbut"  
         type="text"
         onChange={(e) => setname(e.target.value)}
         value={name}
@@ -66,7 +66,7 @@ const ProductForm = ({add, setadd, fetchProducts}) => {
       />
 
       <label>Quantity:</label>
-      <input
+      <input  name="inbut"  
         type="number"
         onChange={(e) => setinitQty(e.target.value)}
         value={initQty}
@@ -74,7 +74,7 @@ const ProductForm = ({add, setadd, fetchProducts}) => {
       />
 
       <label>description:</label>
-      <input
+      <input  name="inbut"  
         type="text"
         onChange={(e) => setdescription(e.target.value)}
         value={description}

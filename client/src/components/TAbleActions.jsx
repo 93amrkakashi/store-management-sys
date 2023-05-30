@@ -119,7 +119,7 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
         <td className="px-4 py-1 border-b border-l">{product.initQty}</td>
         <td className="px-4 py-1 border-b border-l">{product.currQty}</td>
         <td className="px-4 py-1 border-b border-l">
-          <input
+          <input  name="inbut"  
             value={In}
             className="text-black w-20 font-bold"
             type="number"
@@ -127,7 +127,7 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
           />
         </td>
         <td className="px-4 py-1 border-b border-l">
-          <input
+          <input  name="inbut"  
             value={out}
             className="text-black w-20 font-bold"
             type="number"

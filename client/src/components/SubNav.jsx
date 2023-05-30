@@ -33,7 +33,7 @@ const SubNav = ({ products, setFelterdProducts, fetchProducts , setadd, add}) =>
       </button>
       <div className="flex items-center">
         <div className="mr-4 flex items-center">
-          <input
+          <input  name="inbut"  
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             type="text"
