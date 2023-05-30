@@ -8,7 +8,7 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
   const { user } = useAuthContext();
   const [out, setOut] = useState("");
   const [In, setIn] = useState("");
- const userName = `${user?.firstName} ${user?.lastName}`
+  const userName = `${user?.firstName} ${user?.lastName}`;
 
   const handleApply = async () => {
     // const updatedData = {
@@ -21,20 +21,20 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
     const updatedData = {
       initQty: product.initQty + Number(In),
       currQty: product.currQty - Number(out),
-      modifier: [...product.modifier, userName ]
+      modifier: [...product.modifier, userName],
     };
-    
+
     if (In) {
       updatedData.currQty = product.currQty + Number(In);
       updatedData.in = [...product.in, In];
       updatedData.inDate = [...product.inDate, product.updatedAt];
     }
-    
+
     if (out) {
       updatedData.out = [...product.out, out];
       updatedData.outDate = [...product.outDate, product.updatedAt];
     }
-    
+
     if (In && out) {
       updatedData.currQty = product.currQty + Number(In);
       updatedData.in = [...product.in, In];
@@ -43,7 +43,7 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
       updatedData.outDate = [...product.outDate, product.updatedAt];
     }
 
-    // 
+    //
     try {
       const response = await fetch(
         `http://localhost:5000/api/products/${product._id}`,
@@ -110,46 +110,53 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
   return (
     <tbody>
       <tr>
-        <td className="px-4 py-1 border-b border-l">
-          <Link to={`/api/products/${product._id}`}>
-
-          {product.name}
-          </Link>
+        {user.owner ? (
+          <td className="px-4 py-1 border-b border-l">
+            <Link to={`/api/products/${product._id}`}>{product.name}</Link>
           </td>
+        ) : (
+          <td className="px-4 py-1 border-b border-l">{product.name}</td>
+        )}
         <td className="px-4 py-1 border-b border-l">{product.initQty}</td>
         <td className="px-4 py-1 border-b border-l">{product.currQty}</td>
-        <td className="px-4 py-1 border-b border-l">
-          <input  name="inbut"  
-            value={In}
-            className="text-black w-20 font-bold"
-            type="number"
-            onChange={(e) => setIn(e.target.value)}
-          />
-        </td>
-        <td className="px-4 py-1 border-b border-l">
-          <input  name="inbut"  
-            value={out}
-            className="text-black w-20 font-bold"
-            type="number"
-            onChange={(e) => setOut(e.target.value)}
-          />
-        </td>
-        <td className="px-4 py-1 border-b border-l">
-          <button
-            onClick={handleDelete}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold  px-2 rounded mr-2"
-          >
-            Delete
-          </button>
-        </td>
-        <td className="px-4 py-1 border-b border-l">
-          <button
-            onClick={handleApply}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold  px-2 rounded"
-          >
-            Apply
-          </button>
-        </td>
+        {!user.owner && (
+          <>
+            <td className="px-4 py-1 border-b border-l">
+              <input
+                name="inbut"
+                value={In}
+                className="text-black w-20 font-bold"
+                type="number"
+                onChange={(e) => setIn(e.target.value)}
+              />
+            </td>
+            <td className="px-4 py-1 border-b border-l">
+              <input
+                name="inbut"
+                value={out}
+                className="text-black w-20 font-bold"
+                type="number"
+                onChange={(e) => setOut(e.target.value)}
+              />
+            </td>
+            <td className="px-4 py-1 border-b border-l">
+              <button
+                onClick={handleDelete}
+                className="bg-red-500 hover:bg-red-700 text-white font-bold  px-2 rounded mr-2"
+              >
+                Delete
+              </button>
+            </td>
+            <td className="px-4 py-1 border-b border-l">
+              <button
+                onClick={handleApply}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold  px-2 rounded"
+              >
+                Apply
+              </button>
+            </td>
+          </>
+        )}
       </tr>
     </tbody>
   );

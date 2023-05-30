@@ -10,6 +10,8 @@ const ProductsTable = ({
   fetchProducts,
   setFelterdProducts,
 }) => {
+  const { user } = useAuthContext();
+
   return (
     <div className=" min-w-full min-h-full ">
       <table className="min-w-full min-h-full bg-gray-800 text-white text-left ">
@@ -24,6 +26,9 @@ const ProductsTable = ({
             <th className="px-4 py-2 border-b border-l border-t  w-1/12	">
               Available
             </th>
+
+            {!user.owner &&
+            <>
             <th className="px-4 py-2 border-b border-l border-t  w-1/12	">IN</th>
             <th className="px-4 py-2 border-b border-l border-t w-1/12	 ">
               OUT
@@ -34,6 +39,9 @@ const ProductsTable = ({
             <th className="px-4 py-2 border-b border-l border-t  w-1/12	">
               Apply
             </th>
+            </>
+            }
+
           </tr>
         </thead>
         {!filterdProducts

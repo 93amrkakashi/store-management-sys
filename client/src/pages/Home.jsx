@@ -10,6 +10,7 @@ const Home = () => {
   const { user } = useAuthContext();
   const [filterdProducts, setFelterdProducts] = useState(null);
   const [add, setadd] = useState(false);
+  console.log(user);
 
   const fetchProducts = async () => {
     const response = await fetch("http://localhost:5000/api/products", {
@@ -37,13 +38,21 @@ const Home = () => {
         setadd={setadd}
         add={add}
       />
-      <ProductsTable
-        fetchProducts={fetchProducts}
-        products={products}
-        filterdProducts={filterdProducts}
-        setFelterdProducts={setFelterdProducts}
-      />
-      <ProductForm add={add} setadd={setadd} fetchProducts={fetchProducts} />
+      {user.admin && (
+        <>
+          <ProductsTable
+            fetchProducts={fetchProducts}
+            products={products}
+            filterdProducts={filterdProducts}
+            setFelterdProducts={setFelterdProducts}
+          />
+          <ProductForm
+            add={add}
+            setadd={setadd}
+            fetchProducts={fetchProducts}
+          />
+        </>
+      )}
     </div>
   );
 };

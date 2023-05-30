@@ -8,6 +8,7 @@ import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ProductDetails from './components/ProductDetails'
+import Admin from './components/Admin'
 
 function App() {
   const { user } = useAuthContext()
@@ -21,6 +22,10 @@ function App() {
             <Route 
               path="/" 
               element={user ? <Home /> : <Navigate to="/login" />} 
+            />
+            <Route 
+              path="/admin" 
+              element={user ? <Admin /> : <Navigate to="/login" />} 
             />
             <Route 
               path="/api/products/:id" 
