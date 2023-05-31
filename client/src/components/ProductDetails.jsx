@@ -36,6 +36,7 @@ const ProductDetails = () => {
           },
         ],
       };
+      console.log([productData.out.map((date) => date.split("@")[0])])
       setoutData(chartOut);
       
       const chartIn = {
