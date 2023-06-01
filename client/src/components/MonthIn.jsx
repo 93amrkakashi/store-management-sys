@@ -99,6 +99,7 @@ const MonthIn = () => {
 
 
       <table className="min-w-full bg-gray-800 text-white text-left ">
+        
         <thead>
           <tr>
             <th className="px-4 py-2 border-b border-l border-t w-5/12">
