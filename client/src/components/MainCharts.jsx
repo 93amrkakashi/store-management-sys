@@ -9,28 +9,56 @@ const MainCharts = () => {
     setChartType(event.target.value);
   };
 
+
+
+  
+  
+  // const chartIn = {
+  //   // format(
+  //   //   new Date(product.inDate[index]),
+  //   //   "EEEE - dd/MM/yyyy - 'at' hh:mm a"
+  //   // )
+  //   labels: [...productData?.in?.map((date) => format(
+  //     new Date(date?.split("@")[1]),
+  //     "dd/MM/yyyy"
+  //   ))],
+  //   datasets: [
+  //     {
+  //       label: "IN",
+  //       data: [...productData?.in?.map((date) => date.split("@")[0])],
+  //       backgroundColor: "green",
+  //       borderColor: "black",
+  //       borderWidth: 2,
+  //     },
+  //   ],
+  // };
+  // setinData(chartIn);
+
+
   return (
-    <div className="min-w-full h-full overflow-y-scroll p-3">
-      <div>
-        <label>
+    <div className="min-w-full h-full overflow-y-scroll p-3 bg-gray-900">
+      <div className="flex justify-center space-x-4 mb-6">
+        <label className="flex items-center text-white">
           <input
             type="radio"
             name="chartType"
             value="out"
             checked={chartType === "out"}
             onChange={handleChartTypeChange}
+            className="mr-2 appearance-none bg-gray-800 border-2 border-gray-600 rounded-md p-2 focus:outline-none focus:border-blue-500"
           />
-          Out
+          <span className="text-base font-medium">Out</span>
         </label>
-        <label>
+        <label className="flex items-center text-white">
           <input
             type="radio"
             name="chartType"
             value="in"
             checked={chartType === "in"}
             onChange={handleChartTypeChange}
+            className="mr-2 appearance-none bg-gray-800 border-2 border-gray-600 rounded-md p-2 focus:outline-none focus:border-blue-500 color-red"
           />
-          In
+          <span className="text-base font-medium">In</span>
         </label>
       </div>
 

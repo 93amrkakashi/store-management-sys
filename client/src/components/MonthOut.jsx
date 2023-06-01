@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { format } from "date-fns";
+import OutChart from "./OutChart";
 
 const MonthOut = () => {
   const { user } = useAuthContext();
   const { products, dispatch } = useProductsContext();
+  const [outData, setoutData] = useState(null);
 
   const fetchProducts = async () => {
     const response = await fetch("http://localhost:5000/api/products", {
@@ -67,6 +69,24 @@ const MonthOut = () => {
     )
     .filter((sum) => sum !== 0);
 
+
+
+
+    // const chartOut = {
+    //   labels: [filteredProductSumOut?.map((product, index) => product.name)],
+    //   datasets: [
+    //     {
+    //       label: "OUT",
+    //       data: [filteredProductSumOut?.map((product, index) => sums[index])],
+    //       backgroundColor: "red",
+    //       borderColor: "black",
+    //       borderWidth: 2,
+    //     },
+    //   ],
+    // };
+    // setoutData(chartOut);
+    
+
   useEffect(() => {
     if (user || selectedDate) {
       fetchProducts();
@@ -74,7 +94,11 @@ const MonthOut = () => {
   }, [dispatch, user, selectedDate]);
   return (
     <>
-      <select value={selectedDate} onChange={handleDateChange}>
+          <select
+        value={selectedDate}
+        onChange={handleDateChange}
+        className="block mt-4 mb-6 px-4 py-2 rounded-md bg-gray-700 text-white"
+      >
         <option value="">Select A Month</option>
         {uniqueDates.map((date, index) => (
           <option key={index} value={date}>
@@ -83,15 +107,11 @@ const MonthOut = () => {
         ))}
       </select>
 
-      <table className="border-collapse">
+      <table className="min-w-full bg-gray-800 text-white text-left ">
         <thead>
           <tr>
-            <th className="px-4 py-2 border-b border-l border-t w-5/12">
-              Name
-            </th>
-            <th className="px-4 py-2 border-b border-l border-t w-1/12">
-              Available
-            </th>
+            <th className="px-4 py-2 border-b border-l border-t w-5/12	">Name</th>
+            <th className="px-4 py-2 border-b border-l border-t w-1/12">Available</th>
             <th className="px-4 py-2 border-b border-l border-t w-1/12">OUT</th>
           </tr>
         </thead>
@@ -105,6 +125,9 @@ const MonthOut = () => {
           ))}
         </tbody>
       </table>
+      <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
+        {/* {outData && <OutChart outData={outData} />} */}
+      </div>
     </>
   );
 }

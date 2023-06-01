@@ -78,7 +78,11 @@ const InCharts = () => {
 
   return (
     <>
-      <select value={selectedDate} onChange={handleDateChange}>
+      <select
+        value={selectedDate}
+        onChange={handleDateChange}
+        className="block mt-4 mb-6 px-4 py-2 rounded-md bg-gray-700 text-white"
+      >
         <option value="">Select A Month</option>
         {uniqueDates.map((date, index) => (
           <option key={index} value={date}>
@@ -87,7 +91,7 @@ const InCharts = () => {
         ))}
       </select>
 
-      <table className="border-collapse">
+      <table className="min-w-full bg-gray-800 text-white text-left ">
         <thead>
           <tr>
             <th className="px-4 py-2 border-b border-l border-t w-5/12">
