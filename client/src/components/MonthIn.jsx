@@ -41,11 +41,13 @@ const MonthIn = () => {
   const uniqueDates = Array.from(
     new Set(
       productSumin
-        .flatMap((product) => product.ins.map((item) => item.split("@")[1].slice(0, 7)))
+        .flatMap((product) =>
+          product.ins.map((item) => item.split("@")[1].slice(0, 7))
+        )
         .filter((date) => date !== undefined)
     )
   );
-  
+
   console.log(uniqueDates);
 
   const filteredProductSumin = productSumin?.filter((product) =>
@@ -63,23 +65,23 @@ const MonthIn = () => {
     )
     .filter((sum) => sum !== 0);
 
-    useEffect(() => {
-      const chartin = {
-        labels: filteredProductSumin?.map((product) => product.name),
-        datasets: [
-          {
-            label: "in",
-            data: [sums],
-            backgroundColor: "red",
-            borderColor: "black",
-            borderWidth: 2,
-          },
-        ],
-      };
-      setinData(chartin);
-    }, [selectedDate]); // Remove filteredProductSumin and sums from the dependency array
-    
-console.log(uniqueDates);
+  useEffect(() => {
+    const chartin = {
+      labels: filteredProductSumin?.map((product) => product.name),
+      datasets: [
+        {
+          label: "in",
+          data: [...sums],
+          backgroundColor: "red",
+          borderColor: "black",
+          borderWidth: 2,
+        },
+      ],
+    };
+    setinData(chartin);
+  }, [selectedDate]); // Remove filteredProductSumin and sums from the dependency array
+
+  console.log(sums);
   return (
     <>
       <select
@@ -112,16 +114,14 @@ console.log(uniqueDates);
             <tr key={index}>
               <td className="px-4 py-2 border-b border-l">{product.name}</td>
               <td className="px-4 py-2 border-b border-l">{product.currQty}</td>
-              <td className="px-4 py-2 border-b border-l">
-                {sums[index]}
-              </td>
+              <td className="px-4 py-2 border-b border-l">{sums[index]}</td>
             </tr>
           ))}
         </tbody>
       </table>
       <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
-      {inData && <InChart inData={inData} />}
-            </div>
+        {inData && <InChart inData={inData} />}
+      </div>
     </>
   );
 };
