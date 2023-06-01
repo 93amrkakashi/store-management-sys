@@ -39,9 +39,12 @@ const MonthOut = () => {
   }));
 
   const uniqueDates = Array.from(
-    new Set(productSumOut?.flatMap((product) => product.date))
+    new Set(productSumOut?.flatMap((product) => 
+    product.outs.map((item) => item.split("@")[1].slice(0, 7))
+    ).filter((date) => date !== undefined)
+    )
   );
-
+console.log(uniqueDates);
   const filteredProductSumOut = productSumOut?.filter((product) =>
     product.date.includes(selectedDate)
   );
@@ -74,6 +77,7 @@ const MonthOut = () => {
     }, [selectedDate]); // Remove filteredProductSumOut and sums from the dependency array
     
     
+    console.log(sums);
 
   // useEffect(() => {
   //   if (user || selectedDate) {
