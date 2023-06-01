@@ -4,7 +4,9 @@ import { FaSearch, FaSync } from "react-icons/fa";
 const SubNav = ({ products, setFelterdProducts, fetchProducts , setadd, add}) => {
   const [searchValue, setSearchValue] = useState("");
 
-  const handleSearchChange = () => {
+  const handleSearchChange = (e) => {
+    e.preventDefault();
+
     // Filter the products based on the search input
     const filtered = products?.filter((product) =>
       product.name.toLowerCase().includes(searchValue.toLowerCase())
@@ -33,6 +35,7 @@ const SubNav = ({ products, setFelterdProducts, fetchProducts , setadd, add}) =>
       </button>
       <div className="flex items-center">
         <div className="mr-4 flex items-center">
+          <form onSubmit={handleSearchChange}>
           <input  name="inbut"  
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
@@ -40,9 +43,10 @@ const SubNav = ({ products, setFelterdProducts, fetchProducts , setadd, add}) =>
             placeholder="Search"
             className="bg-gray-800 text-white py-2 px-4 rounded-lg focus:outline-none"
           />
-          <button className="text-gray-500 ml-2" onClick={handleSearchChange}>
+          <button className="text-gray-500 ml-2" type="submit" >
             <FaSearch />
           </button>
+          </form>
         </div>
       </div>
     </nav>
