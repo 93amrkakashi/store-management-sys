@@ -39,8 +39,14 @@ const MonthIn = () => {
   }));
 
   const uniqueDates = Array.from(
-    new Set(productSumin?.flatMap((product) => product.date))
+    new Set(
+      productSumin
+        .flatMap((product) => product.ins.map((item) => item.split("@")[1].slice(0, 7)))
+        .filter((date) => date !== undefined)
+    )
   );
+  
+  console.log(uniqueDates);
 
   const filteredProductSumin = productSumin?.filter((product) =>
     product.date.includes(selectedDate)
@@ -73,7 +79,7 @@ const MonthIn = () => {
       setinData(chartin);
     }, [selectedDate]); // Remove filteredProductSumin and sums from the dependency array
     
-console.log(productSumin);
+console.log(uniqueDates);
   return (
     <>
       <select
