@@ -3,22 +3,14 @@ import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { format } from "date-fns";
 import OutChart from "./OutChart";
+import { useFetchProducts } from "../hooks/fetchProducts";
 
 const MonthOut = () => {
   const { user } = useAuthContext();
-  const { products, dispatch } = useProductsContext();
+  const { products } = useProductsContext();
   const [outData, setoutData] = useState(null);
 
-  const fetchProducts = async () => {
-    const response = await fetch("http://localhost:5000/api/products", {
-      headers: { Authorization: `Bearer ${user.token}` },
-    });
-    const json = await response.json();
-
-    if (response.ok) {
-      dispatch({ type: "SET_PRODUCTS", payload: json });
-    }
-  };
+  useFetchProducts(user);
 
   const [selectedDate, setSelectedDate] = useState("");
 
@@ -56,10 +48,6 @@ const MonthOut = () => {
 
   const arrays = products !== null ? Array.from(products, (p) => p.out) : [];
 
-  if (products === null) {
-    fetchProducts();
-  }
-
   const filteredArrays = arrays.map((array) =>
     array?.filter((item) => item?.includes(selectedDate))
   );
@@ -69,29 +57,32 @@ const MonthOut = () => {
     )
     .filter((sum) => sum !== 0);
 
-
-
-
-    // const chartOut = {
-    //   labels: [filteredProductSumOut?.map((product, index) => product.name)],
-    //   datasets: [
-    //     {
-    //       label: "OUT",
-    //       data: [filteredProductSumOut?.map((product, index) => sums[index])],
-    //       backgroundColor: "red",
-    //       borderColor: "black",
-    //       borderWidth: 2,
-    //     },
-    //   ],
-    // };
-    // setoutData(chartOut);
+    useEffect(() => {
+      const chartOut = {
+        labels: filteredProductSumOut?.map((product) => product.name),
+        datasets: [
+          {
+            label: "OUT",
+            data: [...sums],
+            backgroundColor: "red",
+            borderColor: "black",
+            borderWidth: 2,
+          },
+        ],
+      };
+      setoutData(chartOut);
+    }, [selectedDate]); // Remove filteredProductSumOut and sums from the dependency array
+    
     
 
-  useEffect(() => {
-    if (user || selectedDate) {
-      fetchProducts();
-    }
-  }, [dispatch, user, selectedDate]);
+  // useEffect(() => {
+  //   if (user || selectedDate) {
+  //     fetchProducts();
+  //   }
+  // }, [dispatch, user, selectedDate]);
+
+
+  
   return (
     <>
           <select
@@ -126,7 +117,7 @@ const MonthOut = () => {
         </tbody>
       </table>
       <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
-        {/* {outData && <OutChart outData={outData} />} */}
+        {outData && <OutChart outData={outData} />}
       </div>
     </>
   );

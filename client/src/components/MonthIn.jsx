@@ -2,31 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { format } from "date-fns";
+import { useFetchProducts } from "../hooks/fetchProducts";
+import InChart from "./InChart";
 
-const InCharts = () => {
+const MonthIn = () => {
   const { user } = useAuthContext();
-  const { products, dispatch } = useProductsContext();
+  const { products } = useProductsContext();
+  const [inData, setinData] = useState(null);
 
-  const fetchProducts = async () => {
-    const response = await fetch("http://localhost:5000/api/products", {
-      headers: { Authorization: `Bearer ${user.token}` },
-    });
-    const json = await response.json();
+  useFetchProducts(user);
 
-    if (response.ok) {
-      dispatch({ type: "SET_PRODUCTS", payload: json });
-    }
-  };
-
-  const [selectedDate, setSelectedDate] = useState(""); // State for the selected date
+  const [selectedDate, setSelectedDate] = useState("");
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
   };
 
-  const productSumIn = products?.map((product) => ({
+  const productSumin = products?.map((product) => ({
     name: product.name,
-    sumIn: product.in.reduce(
+    sumin: product.in.reduce(
       (acc, item) => acc + parseInt(item.split("@")[0]),
       0
     ),
@@ -45,20 +39,14 @@ const InCharts = () => {
   }));
 
   const uniqueDates = Array.from(
-    new Set(productSumIn?.flatMap((product) => product.date))
+    new Set(productSumin?.flatMap((product) => product.date))
   );
 
-  // Filter the productSumIn based on the selected date
-  const filteredProductSumIn = productSumIn?.filter((product) =>
+  const filteredProductSumin = productSumin?.filter((product) =>
     product.date.includes(selectedDate)
   );
 
   const arrays = products !== null ? Array.from(products, (p) => p.in) : [];
-
-  // Check if products is null and refetch products
-  if (products === null) {
-    fetchProducts();
-  }
 
   const filteredArrays = arrays.map((array) =>
     array?.filter((item) => item?.includes(selectedDate))
@@ -69,13 +57,23 @@ const InCharts = () => {
     )
     .filter((sum) => sum !== 0);
 
-
-  useEffect(() => {
-    if (user || selectedDate) {
-      fetchProducts();
-    }
-  }, [dispatch, user, selectedDate]);
-
+    useEffect(() => {
+      const chartin = {
+        labels: filteredProductSumin?.map((product) => product.name),
+        datasets: [
+          {
+            label: "in",
+            data: [sums],
+            backgroundColor: "red",
+            borderColor: "black",
+            borderWidth: 2,
+          },
+        ],
+      };
+      setinData(chartin);
+    }, [selectedDate]); // Remove filteredProductSumin and sums from the dependency array
+    
+console.log(productSumin);
   return (
     <>
       <select
@@ -104,7 +102,7 @@ const InCharts = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredProductSumIn?.map((product, index) => (
+          {filteredProductSumin?.map((product, index) => (
             <tr key={index}>
               <td className="px-4 py-2 border-b border-l">{product.name}</td>
               <td className="px-4 py-2 border-b border-l">{product.currQty}</td>
@@ -115,8 +113,11 @@ const InCharts = () => {
           ))}
         </tbody>
       </table>
+      <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
+      {inData && <InChart inData={inData} />}
+            </div>
     </>
   );
 };
 
-export default InCharts;
+export default MonthIn;

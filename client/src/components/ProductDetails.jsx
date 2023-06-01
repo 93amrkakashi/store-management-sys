@@ -11,8 +11,8 @@ const ProductDetails = () => {
   const { id } = useParams();
   const { user } = useAuthContext();
   const [product, setProduct] = useState(null);
-  const [outData, setoutData] = useState(null);
-  const [inData, setinData] = useState(null);
+  const [outData, setOutData] = useState(null);
+  const [inData, setInData] = useState(null);
 
   const fetchProduct = async () => {
     try {
@@ -22,43 +22,38 @@ const ProductDetails = () => {
 
       // Prepare chart data based on product data
       const chartOut = {
-        labels: [...productData?.out?.map((date) => format(
+        labels: productData?.out?.map((date) => format(
           new Date(date?.split("@")[1]),
           "dd/MM/yyyy"
-        ))],
+        )),
         datasets: [
           {
             label: "OUT",
-            data: [...productData?.out?.map((date) => date.split("@")[0])],
+            data: productData?.out?.map((date) => date.split("@")[0]),
             backgroundColor: "red",
             borderColor: "black",
             borderWidth: 2,
           },
         ],
       };
-      console.log([productData.out.map((date) => date.split("@")[0])])
-      setoutData(chartOut);
+      setOutData(chartOut);
       
       const chartIn = {
-        // format(
-        //   new Date(product.inDate[index]),
-        //   "EEEE - dd/MM/yyyy - 'at' hh:mm a"
-        // )
-        labels: [...productData?.in?.map((date) => format(
+        labels: productData?.in?.map((date) => format(
           new Date(date?.split("@")[1]),
           "dd/MM/yyyy"
-        ))],
+        )),
         datasets: [
           {
             label: "IN",
-            data: [...productData?.in?.map((date) => date.split("@")[0])],
+            data: productData?.in?.map((date) => date.split("@")[0]),
             backgroundColor: "green",
             borderColor: "black",
             borderWidth: 2,
           },
         ],
       };
-      setinData(chartIn);
+      setInData(chartIn);
     } catch (error) {
       console.error("Error fetching product:", error);
     }
@@ -98,8 +93,8 @@ const ProductDetails = () => {
         {outData && <OutChart outData={outData} />}
         {inData && <InChart inData={inData} />}
       </div>
-      <div className="charts  min-w-full mx-auto px-4 py-8 ">
-      <ProductTable product={product} />
+      <div className="charts min-w-full mx-auto px-4 py-8">
+        <ProductTable product={product} />
       </div>
     </div>
   );
