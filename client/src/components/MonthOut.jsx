@@ -116,7 +116,7 @@ const MonthOut = () => {
         </tbody>
       </table>
       <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
-        {outData && <OutChart outData={outData} />}
+        {/* {outData && <OutChart outData={outData} />} */}
       </div>
     </>
   );

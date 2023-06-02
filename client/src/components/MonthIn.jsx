@@ -48,7 +48,6 @@ const MonthIn = () => {
     )
   );
 
-  console.log(uniqueDates);
 
   const filteredProductSumin = productSumin?.filter((product) =>
     product.date.includes(selectedDate)
@@ -119,7 +118,7 @@ const MonthIn = () => {
         </tbody>
       </table>
       <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
-        {inData && <InChart inData={inData} />}
+        {/* {inData && <InChart inData={inData} />} */}
       </div>
     </>
   );

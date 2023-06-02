@@ -55,7 +55,7 @@ const ProductDetails = () => {
       console.error("Error fetching product:", error);
     }
   };
-
+  const inChartKey = inData ? Math.random() : null;
   useEffect(() => {
     if (user) {
       fetchProduct();
@@ -87,8 +87,8 @@ const ProductDetails = () => {
         </p>
       </div>
       <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
-        {outData && <OutChart outData={outData} />}
-        {inData && <InChart inData={inData} />}
+        {/* {outData && <OutChart outData={outData} />} */}
+        {/* {inData && <InChart key={inChartKey} inData={inData} />}{" "} */}
       </div>
       <div className="charts min-w-full mx-auto px-4 py-8">
         <ProductTable product={product} />
