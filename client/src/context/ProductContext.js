@@ -1,43 +1,45 @@
-import { createContext, useReducer } from 'react'
+import { createContext, useReducer } from "react";
 
-export const ProductsContext = createContext()
+export const ProductsContext = createContext();
 
 export const productsReducer = (state, action) => {
   switch (action.type) {
-    case 'SET_PRODUCTS': 
+    case "SET_PRODUCTS":
       return {
-        products: action.payload
-      }
-    case 'CREATE_PRODUCT':
+        products: action.payload,
+      };
+    case "CREATE_PRODUCT":
       return {
-        products: [action.payload, ...state.products]
-      }
-    case 'UPDATE_PRODUCT':
+        products: [action.payload, ...state.products],
+      };
+    case "UPDATE_PRODUCT":
       return {
         products: state.products.map((product) => {
           if (product._id === action.payload._id) {
             return action.payload;
           }
           return product;
-        })
-      }
-    case 'DELETE_PRODUCT':
+        }),
+      };
+    case "DELETE_PRODUCT":
       return {
-        products: state.products.filter((product) => product._id !== action.payload._id)
-      }
+        products: state.products.filter(
+          (product) => product._id !== action.payload._id
+        ),
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
 export const ProductsContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(productsReducer, {
-    products: null
-  })
+    products: null,
+  });
 
   return (
-    <ProductsContext.Provider value={{...state, dispatch}}>
-      { children }
+    <ProductsContext.Provider value={{ ...state, dispatch }}>
+      {children}
     </ProductsContext.Provider>
-  )
-}
+  );
+};
