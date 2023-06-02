@@ -25,22 +25,13 @@ function App() {
               path="/"
               element={user ? <Home /> : <Navigate to="/login" />}
             />
-            <Route
-              path="/admin"
-              element={user && <Admin />  }
-            />
-            <Route
-              path="/admin/users"
-              element={user && <Users /> }
-            />
+            <Route path="/admin" element={user?.owner && <Admin />} />
+            <Route path="/admin/users" element={user?.owner && <Users />} />
             <Route
               path="/admin/charts"
-              element={user && <MainCharts /> }
+              element={user?.owner && <MainCharts />}
             />
-            <Route
-              path="/products/:id"
-              element={user && <ProductDetails /> }
-            />
+            <Route path="/products/:id" element={user && <ProductDetails />} />
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
