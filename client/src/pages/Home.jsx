@@ -12,7 +12,7 @@ const Home = () => {
   const [add, setadd] = useState(false);
 
   const fetchProducts = async () => {
-    const response = await fetch("https://store-management-sys.vercel.app/products", {
+    const response = await fetch("/products", {
       headers: { Authorization: `Bearer ${user.token}` },
     });
     const json = await response.json();
