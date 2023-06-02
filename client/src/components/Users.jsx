@@ -8,7 +8,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/user/users')
+    fetch('/user/users')
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((error) => console.log(error));

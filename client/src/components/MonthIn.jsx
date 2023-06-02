@@ -79,9 +79,8 @@ const MonthIn = () => {
       ],
     };
     setinData(chartin);
-  }, [selectedDate]); // Remove filteredProductSumin and sums from the dependency array
+  }, [selectedDate]);
 
-  console.log(sums);
   return (
     <>
       <select
@@ -97,9 +96,7 @@ const MonthIn = () => {
         ))}
       </select>
 
-
       <table className="min-w-full bg-gray-800 text-white text-left ">
-        
         <thead>
           <tr>
             <th className="px-4 py-2 border-b border-l border-t w-5/12">

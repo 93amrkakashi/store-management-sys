@@ -1,7 +1,4 @@
-import { useEffect } from "react";
-import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-import ProductForm from "../components/ProductForm";
 import TAbleActions from "./TAbleActions";
 
 const ProductsTable = ({
@@ -27,21 +24,22 @@ const ProductsTable = ({
               Available
             </th>
 
-            {user.owner &&
-            <>
-            <th className="px-4 py-2 border-b border-l border-t  w-1/12	">IN</th>
-            <th className="px-4 py-2 border-b border-l border-t w-1/12	 ">
-              OUT
-            </th>
-            <th className="px-4 py-2 border-b border-l border-t  w-1/12	">
-              Delete
-            </th>
-            <th className="px-4 py-2 border-b border-l border-t  w-1/12	">
-              Apply
-            </th>
-            </>
-            }
-
+            {user.owner && (
+              <>
+                <th className="px-4 py-2 border-b border-l border-t  w-1/12	">
+                  IN
+                </th>
+                <th className="px-4 py-2 border-b border-l border-t w-1/12	 ">
+                  OUT
+                </th>
+                <th className="px-4 py-2 border-b border-l border-t  w-1/12	">
+                  Delete
+                </th>
+                <th className="px-4 py-2 border-b border-l border-t  w-1/12	">
+                  Apply
+                </th>
+              </>
+            )}
           </tr>
         </thead>
         {!filterdProducts

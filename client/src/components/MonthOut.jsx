@@ -39,12 +39,14 @@ const MonthOut = () => {
   }));
 
   const uniqueDates = Array.from(
-    new Set(productSumOut?.flatMap((product) => 
-    product.outs.map((item) => item.split("@")[1].slice(0, 7))
-    ).filter((date) => date !== undefined)
+    new Set(
+      productSumOut
+        ?.flatMap((product) =>
+          product.outs.map((item) => item.split("@")[1].slice(0, 7))
+        )
+        .filter((date) => date !== undefined)
     )
   );
-console.log(uniqueDates);
   const filteredProductSumOut = productSumOut?.filter((product) =>
     product.date.includes(selectedDate)
   );
@@ -60,36 +62,25 @@ console.log(uniqueDates);
     )
     .filter((sum) => sum !== 0);
 
-    useEffect(() => {
-      const chartOut = {
-        labels: filteredProductSumOut?.map((product) => product.name),
-        datasets: [
-          {
-            label: "OUT",
-            data: [...sums],
-            backgroundColor: "red",
-            borderColor: "black",
-            borderWidth: 2,
-          },
-        ],
-      };
-      setoutData(chartOut);
-    }, [selectedDate]); // Remove filteredProductSumOut and sums from the dependency array
-    
-    
-    console.log(sums);
-
-  // useEffect(() => {
-  //   if (user || selectedDate) {
-  //     fetchProducts();
-  //   }
-  // }, [dispatch, user, selectedDate]);
-
-
+  useEffect(() => {
+    const chartOut = {
+      labels: filteredProductSumOut?.map((product) => product.name),
+      datasets: [
+        {
+          label: "OUT",
+          data: [...sums],
+          backgroundColor: "red",
+          borderColor: "black",
+          borderWidth: 2,
+        },
+      ],
+    };
+    setoutData(chartOut);
+  }, [selectedDate]); 
   
   return (
     <>
-          <select
+      <select
         value={selectedDate}
         onChange={handleDateChange}
         className="block mt-4 mb-6 px-4 py-2 rounded-md bg-gray-700 text-white"
@@ -105,8 +96,12 @@ console.log(uniqueDates);
       <table className="min-w-full bg-gray-800 text-white text-left ">
         <thead>
           <tr>
-            <th className="px-4 py-2 border-b border-l border-t w-5/12	">Name</th>
-            <th className="px-4 py-2 border-b border-l border-t w-1/12">Available</th>
+            <th className="px-4 py-2 border-b border-l border-t w-5/12	">
+              Name
+            </th>
+            <th className="px-4 py-2 border-b border-l border-t w-1/12">
+              Available
+            </th>
             <th className="px-4 py-2 border-b border-l border-t w-1/12">OUT</th>
           </tr>
         </thead>
@@ -125,6 +120,6 @@ console.log(uniqueDates);
       </div>
     </>
   );
-}
+};
 
-export default MonthOut
+export default MonthOut;

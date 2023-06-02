@@ -6,7 +6,6 @@ import InChart from "./InChart";
 import ProductTable from "./ProductTable";
 import { format } from "date-fns";
 
-
 const ProductDetails = () => {
   const { id } = useParams();
   const { user } = useAuthContext();
@@ -16,16 +15,14 @@ const ProductDetails = () => {
 
   const fetchProduct = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/products/${id}`);
+      const response = await fetch(`/products/${id}`);
       const productData = await response.json();
       setProduct(productData);
 
-      // Prepare chart data based on product data
       const chartOut = {
-        labels: productData?.out?.map((date) => format(
-          new Date(date?.split("@")[1]),
-          "dd/MM/yyyy"
-        )),
+        labels: productData?.out?.map((date) =>
+          format(new Date(date?.split("@")[1]), "dd/MM/yyyy")
+        ),
         datasets: [
           {
             label: "OUT",
@@ -37,12 +34,11 @@ const ProductDetails = () => {
         ],
       };
       setOutData(chartOut);
-      
+
       const chartIn = {
-        labels: productData?.in?.map((date) => format(
-          new Date(date?.split("@")[1]),
-          "dd/MM/yyyy"
-        )),
+        labels: productData?.in?.map((date) =>
+          format(new Date(date?.split("@")[1]), "dd/MM/yyyy")
+        ),
         datasets: [
           {
             label: "IN",
