@@ -19,11 +19,11 @@ app.use((req, res, next) => {
 app.use(cors());
 
 //routes
+app.use("/api/products", productsRoutes);
+app.use('/api/user', userRoutes)
 app.get("/", (req,res) => {
   res.json({msg:"app is running"})
 })
-app.use("/api/products", productsRoutes);
-app.use('/api/user', userRoutes)
 
 mongoose
   .connect(process.env.MONGO_URI)
