@@ -12,7 +12,7 @@ const Home = () => {
   const [add, setadd] = useState(false);
 
   const fetchProducts = async () => {
-    const response = await fetch("http://localhost:5000/api/products", {
+    const response = await fetch("/products", {
       headers: { Authorization: `Bearer ${user.token}` },
     });
     const json = await response.json();
@@ -25,7 +25,7 @@ const Home = () => {
     if (user) {
       fetchProducts();
     }
-  }, [dispatch, user, filterdProducts,]);
+  }, [dispatch, user, filterdProducts]);
 
   return (
     <div className="min-w-full h-full overflow-y-scroll p-3">
