@@ -8,7 +8,7 @@ export const useFetchProducts = (user) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch("http://localhost:5000/api/products", {
+      const response = await fetch("/products", {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       const json = await response.json();
