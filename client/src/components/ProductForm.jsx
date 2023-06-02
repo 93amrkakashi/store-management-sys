@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { url } from "../const";
 
 const ProductForm = ({ add, setadd, fetchProducts }) => {
   const { dispatch } = useProductsContext();
@@ -25,7 +26,7 @@ const ProductForm = ({ add, setadd, fetchProducts }) => {
 
     const Product = { name, description, initQty, creator: userName };
 
-    const response = await fetch("/products", {
+    const response = await fetch(`${url}/products`, {
       method: "POST",
       body: JSON.stringify(Product),
       headers: {

@@ -2,6 +2,7 @@ import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { url } from "../const";
 const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
   const { dispatch } = useProductsContext();
   const { user } = useAuthContext();
@@ -43,7 +44,7 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
     }
     //
     try {
-      const response = await fetch(`/products/${product._id}`, {
+      const response = await fetch(`${url}/products/${product._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

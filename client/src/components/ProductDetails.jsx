@@ -5,6 +5,7 @@ import OutChart from "./OutChart";
 import InChart from "./InChart";
 import ProductTable from "./ProductTable";
 import { format } from "date-fns";
+import { url } from "../const";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const ProductDetails = () => {
 
   const fetchProduct = async () => {
     try {
-      const response = await fetch(`/products/${id}`);
+      const response = await fetch(`${url}/products/${id}`);
       const productData = await response.json();
       setProduct(productData);
 

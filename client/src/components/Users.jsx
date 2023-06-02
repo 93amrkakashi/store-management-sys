@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
+import { url } from '../const';
 
 const Users = () => {
   const { user } = useAuthContext();
@@ -8,7 +9,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('/user/users')
+    fetch(`${url}/user/users`)
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((error) => console.log(error));

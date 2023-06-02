@@ -4,6 +4,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useEffect, useState } from "react";
 import ProductForm from "../components/ProductForm";
 import ProductsTable from "../components/ProductsTable";
+import { url } from "../const";
 
 const Home = () => {
   const { products, dispatch } = useProductsContext();
@@ -12,7 +13,7 @@ const Home = () => {
   const [add, setadd] = useState(false);
 
   const fetchProducts = async () => {
-    const response = await fetch("/products", {
+    const response = await fetch(`${url}/products`, {
       headers: { Authorization: `Bearer ${user.token}` },
     });
     const json = await response.json();
