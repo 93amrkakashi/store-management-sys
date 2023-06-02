@@ -9,47 +9,6 @@ const MainCharts = () => {
     setChartType(event.target.value);
   };
 
-
-
-  // const data = [
-  //   ["5@2023-06-01T04:13:31.947Z@amr ali"],
-  //   [],
-  //   ["100@2023-05-30T11:09:48.372Z@amr ali", "10@2023-05-30T11:45:12.343Z@amr ali", "15@2023-05-30T11:46:06.498Z@amr ali"]
-  // ];
-  
-  // const uniqueDates = Array.from(
-  //   new Set(
-  //     data
-  //       .flat()
-  //       .map((item) => item.split("@")[1])
-  //       // .map((date) => new Date(date).toISOString().split("T")[0].slice(0, 7))
-  //   )
-  // );
-  
-  // console.log(uniqueDates);
-  
-  // const chartIn = {
-  //   // format(
-  //   //   new Date(product.inDate[index]),
-  //   //   "EEEE - dd/MM/yyyy - 'at' hh:mm a"
-  //   // )
-  //   labels: [...productData?.in?.map((date) => format(
-  //     new Date(date?.split("@")[1]),
-  //     "dd/MM/yyyy"
-  //   ))],
-  //   datasets: [
-  //     {
-  //       label: "IN",
-  //       data: [...productData?.in?.map((date) => date.split("@")[0])],
-  //       backgroundColor: "green",
-  //       borderColor: "black",
-  //       borderWidth: 2,
-  //     },
-  //   ],
-  // };
-  // setinData(chartIn);
-
-
   return (
     <div className="min-w-full h-full overflow-y-scroll p-3 bg-gray-900">
       <div className="flex justify-center space-x-4 mb-6">
