@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useProductsContext } from "./useProductsContext";
+import { url } from "../const";
 
 
 
@@ -8,7 +9,7 @@ export const useFetchProducts = (user) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch("/products", {
+      const response = await fetch(`${url}/products`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       const json = await response.json();

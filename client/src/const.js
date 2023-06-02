@@ -1,0 +1,1 @@
+export const url = "https://store-management-sys.vercel.app/api"
