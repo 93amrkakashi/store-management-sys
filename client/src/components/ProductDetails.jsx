@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useParams } from "react-router-dom";
-import OutChart from "./OutChart";
-import InChart from "./InChart";
+// import OutChart from "./OutChart";
+// import InChart from "./InChart";
 import ProductTable from "./ProductTable";
 import { format } from "date-fns";
 import { url } from "../const";
-
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import InChart from "./InChart";
+import OutChart from "./OutChart";
 const ProductDetails = () => {
   const { id } = useParams();
   const { user } = useAuthContext();
@@ -14,43 +26,22 @@ const ProductDetails = () => {
   const [outData, setOutData] = useState(null);
   const [inData, setInData] = useState(null);
 
+  const dataOut = product?.out?.map((item) => {
+    const [value, date, creator] = item.split("@");
+    const formattedDate = format(new Date(date), "dd-MM-yyyy");
+    return { date: formattedDate, in: product.in[0].split("@")[0], out: value };
+  });
+  const dataIn = product?.in?.map((item) => {
+    const [value, date, creator] = item.split("@");
+    const formattedDate = format(new Date(date), "dd-MM-yyyy");
+    return { date: formattedDate, in: product.in[0].split("@")[0], out: value };
+  });
   const fetchProduct = async () => {
     try {
       const response = await fetch(`${url}/products/${id}`);
       const productData = await response.json();
       setProduct(productData);
-
-      const chartOut = {
-        labels: productData?.out?.map((date) =>
-          format(new Date(date?.split("@")[1]), "dd/MM/yyyy")
-        ),
-        datasets: [
-          {
-            label: "OUT",
-            data: productData?.out?.map((date) => date.split("@")[0]),
-            backgroundColor: "red",
-            borderColor: "black",
-            borderWidth: 2,
-          },
-        ],
-      };
-      setOutData(chartOut);
-
-      const chartIn = {
-        labels: productData?.in?.map((date) =>
-          format(new Date(date?.split("@")[1]), "dd/MM/yyyy")
-        ),
-        datasets: [
-          {
-            label: "IN",
-            data: productData?.in?.map((date) => date.split("@")[0]),
-            backgroundColor: "green",
-            borderColor: "black",
-            borderWidth: 2,
-          },
-        ],
-      };
-      setInData(chartIn);
+    
     } catch (error) {
       console.error("Error fetching product:", error);
     }
@@ -86,10 +77,11 @@ const ProductDetails = () => {
           {product.currQty}
         </p>
       </div>
-      <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
-        {/* {outData && <OutChart outData={outData} />} */}
-        {/* {inData && <InChart key={inChartKey} inData={inData} />}{" "} */}
+      <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white w-full">
+        {dataOut && <OutChart dataOut={dataOut} />} 
+         {dataIn && <InChart key={inChartKey} dataIn={dataIn} />}
       </div>
+
       <div className="charts min-w-full mx-auto px-4 py-8">
         <ProductTable product={product} />
       </div>
