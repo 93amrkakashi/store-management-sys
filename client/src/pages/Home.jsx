@@ -30,6 +30,7 @@ const Home = () => {
 
   return (
     <div className="min-w-full h-full overflow-y-scroll p-3">
+      {user.admin && (
       <SubNav
         fetchProducts={fetchProducts}
         products={products}
@@ -37,7 +38,7 @@ const Home = () => {
         filterdProducts={filterdProducts}
         setadd={setadd}
         add={add}
-      />
+      />)}
       <div className="flex flex-col">
         {user.admin && (
           <>

@@ -3,6 +3,9 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { url } from "../const";
+import { AiFillDelete } from "react-icons/ai";
+import { MdOutlineDoneOutline } from "react-icons/md";
+
 const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
   const { dispatch } = useProductsContext();
   const { user } = useAuthContext();
@@ -101,48 +104,46 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
     <tbody>
       <tr>
         {user.owner ? (
-          <td className="px-4 py-1 border-b border-l">
+          <td className="px-2 py-1 border-b border-l">
             <Link to={`/products/${product._id}`}>{product.name}</Link>
           </td>
         ) : (
-          <td className="px-4 py-1 border-b border-l">{product.name}</td>
+          <td className="px-2 py-1 border-b border-l">{product.name}</td>
         )}
-        <td className="px-4 py-1 border-b border-l">{product.initQty}</td>
-        <td className="px-4 py-1 border-b border-l">{product.currQty}</td>
+        {/* <td className="px-2 py-1 border-b border-l">{product.initQty}</td> */}
+        <td className="px-2 py-1 border-b border-l">{product.currQty}</td>
         {user.owner && (
           <>
-            <td className="px-4 py-1 border-b border-l">
+            <td className="text-center   py-1 border-b border-l">
               <input
                 name="inbut"
                 value={In}
-                className="text-black w-20 font-bold"
+                className="text-center  text-black w-20 font-bold w-[50px]"
                 type="number"
                 onChange={(e) => setIn(e.target.value)}
               />
             </td>
-            <td className="px-4 py-1 border-b border-l">
+            <td className="text-center   py-1 border-b border-l">
               <input
                 name="inbut"
                 value={out}
-                className="text-black w-20 font-bold"
+                className="text-center  text-black w-20 font-bold w-[50px]"
                 type="number"
                 onChange={(e) => setOut(e.target.value)}
               />
             </td>
-            <td className="px-4 py-1 border-b border-l">
+            <td className="text-center px-4 py-1 border-b border-l text-red-500 hover:text-red-700 text-2xl font-bold text-center">
               <button
                 onClick={handleDelete}
-                className="bg-red-500 hover:bg-red-700 text-white font-bold  px-2 rounded mr-2"
               >
-                Delete
+                <AiFillDelete />
               </button>
             </td>
-            <td className="px-4 py-1 border-b border-l">
+            <td className="text-center  px-4 py-1 border-b border-l hover:text-blue-700 text-blue-500 text-2xl font-bold text-center">
               <button
                 onClick={handleApply}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold  px-2 rounded"
               >
-                Apply
+                <MdOutlineDoneOutline />
               </button>
             </td>
           </>
