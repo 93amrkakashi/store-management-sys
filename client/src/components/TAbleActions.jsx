@@ -127,7 +127,7 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
               <input
                 name="inbut"
                 value={out}
-                className="text-center  text-blackw-[70px] font-bold "
+                className="text-center  text-black w-[70px] font-bold "
                 type="number"
                 onChange={(e) => setOut(e.target.value)}
               />

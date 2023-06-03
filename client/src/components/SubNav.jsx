@@ -25,31 +25,31 @@ const SubNav = ({
     fetchProducts();
   };
   return (
-    <nav className="bg-gray-900 py-4 px-6 flex flex-wrap justify-between items-center">
+    <nav className="bg-gray-900 py-2 px-3 flex flex-wrap justify-between items-center rounded-md my-2">
       <button
         onClick={() => setadd(!add)}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 sm:mb-0"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded "
       >
         Add a Product
       </button>
       <button
         onClick={handleRefresh}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2 sm:ml-4"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded "
       >
         <FaSync />
       </button>
-      <div className="flex items-center ml-2 sm:ml-4 mt-2 sm:mt-0">
-        <div className="mr-2 sm:mr-4 flex items-center">
-          <form onSubmit={handleSearchChange}>
+      <div className="flex items-center ">
+        <div>
+          <form onSubmit={handleSearchChange} className="flex">
             <input
               name="inbut"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               type="text"
               placeholder="Search"
-              className="bg-gray-800 text-white py-2 px-4 rounded-lg focus:outline-none w-32 sm:w-40"
+              className="bg-white-500 text-black font-semibold py-1 px-2 rounded-l-md focus:outline-none w-32 sm:w-40 border-r-0"
             />
-            <button className="text-gray-500 ml-2" type="submit">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md  " type="submit">
               <FaSearch />
             </button>
           </form>

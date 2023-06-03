@@ -10,7 +10,7 @@ const ProductsTable = ({
 
   return (
     <div className="min-w-full min-h-full">
-      <table className="min-w-full min-h-full bg-gray-800 text-white text-left">
+      <table className="min-w-full min-h-full bg-gray-800 text-white text-left rounded">
         <thead>
           <tr>
             <th className="px-1 py-2 border-b border-l border-t w-5/12 sm:w-auto">
@@ -32,7 +32,7 @@ const ProductsTable = ({
                   OUT
                 </th>
                 <th
-                  className="text-center px-1 py-2 border-b border-l border-t text-center"
+                  className="text-center px-1 py-2 border-b border-l border-t border-r text-center"
                   colSpan={2}
                 >
                   actions

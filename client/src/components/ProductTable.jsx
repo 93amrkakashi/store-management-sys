@@ -5,7 +5,7 @@ export const TableP = ({ product, title }) => {
   return (
     <div>
       <h2>{title.toUpperCase()}</h2>
-      <table className="min-w-full min-h-full bg-gray-800 text-white text-left ">
+      <table className="min-w-full min-h-full bg-gray-900 text-white text-left ">
         <thead>
           <tr>
             <th className="px-4 py-2 border-b border-l border-t w-1/12	 ">

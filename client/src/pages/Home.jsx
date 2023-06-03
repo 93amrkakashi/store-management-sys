@@ -29,7 +29,7 @@ const Home = () => {
   }, [dispatch, user, filterdProducts]);
 
   return (
-    <div className="min-w-full h-full overflow-y-scroll p-3">
+    <div className="min-w-full h-full overflow-y-scroll p-3 bg-gray-800">
       {user.admin && (
       <SubNav
         fetchProducts={fetchProducts}

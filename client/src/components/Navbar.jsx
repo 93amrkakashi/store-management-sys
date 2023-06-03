@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-gray-800 text-white sticky top-0 z-10 h-[8vh] flex px-3 ">
+    <header className="bg-gray-900 text-white sticky top-0 z-10 h-[8vh] flex px-3 ">
       <div className="container mx-auto flex items-center justify-between py-4">
         <Link to="/">
           <h1 className="text-3xl font-bold">Store M S</h1>
