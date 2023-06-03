@@ -111,14 +111,14 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
           <td className="px-2 py-1 border-b border-l">{product.name}</td>
         )}
         {/* <td className="px-2 py-1 border-b border-l">{product.initQty}</td> */}
-        <td className="px-2 py-1 border-b border-l">{product.currQty}</td>
+        <td className="text-center px-2 py-1 border-b border-l">{product.currQty}</td>
         {user.owner && (
           <>
             <td className="text-center   py-1 border-b border-l">
               <input
                 name="inbut"
                 value={In}
-                className="text-center  text-black w-20 font-bold w-[50px]"
+                className="text-center  text-black  font-bold w-[70px]"
                 type="number"
                 onChange={(e) => setIn(e.target.value)}
               />
@@ -127,7 +127,7 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
               <input
                 name="inbut"
                 value={out}
-                className="text-center  text-black w-20 font-bold w-[50px]"
+                className="text-center  text-blackw-[70px] font-bold "
                 type="number"
                 onChange={(e) => setOut(e.target.value)}
               />
@@ -139,7 +139,7 @@ const TAbleActions = ({ product, fetchProducts, setFelterdProducts }) => {
                 <AiFillDelete />
               </button>
             </td>
-            <td className="text-center  px-4 py-1 border-b border-l hover:text-blue-700 text-blue-500 text-2xl font-bold text-center">
+            <td className="text-center  px-4 py-1 border-b border-l border-r hover:text-blue-700 text-blue-500 text-2xl font-bold text-center">
               <button
                 onClick={handleApply}
               >
