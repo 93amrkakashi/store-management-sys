@@ -97,7 +97,7 @@ const MonthOut = () => {
           </option>
         ))}
       </select>
-
+      {selectedDate && <>
       <table className="min-w-full bg-gray-800 text-white text-left ">
         <thead>
           <tr>
@@ -136,6 +136,7 @@ const MonthOut = () => {
         </div>
         
       </div>
+      </>}
     </>
   );
 };

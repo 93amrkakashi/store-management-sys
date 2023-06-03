@@ -98,6 +98,7 @@ const MonthIn = () => {
           </option>
         ))}
       </select>
+{selectedDate && <>
 
       <table className="min-w-full bg-gray-800 text-white text-left ">
         <thead>
@@ -135,6 +136,7 @@ const MonthIn = () => {
           </ResponsiveContainer>
         </div>
       </div>
+      </>}
     </>
   );
 };
