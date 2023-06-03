@@ -4,11 +4,21 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { format } from "date-fns";
 import OutChart from "./OutChart";
 import { useFetchProducts } from "../hooks/fetchProducts";
-
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 const MonthOut = () => {
   const { user } = useAuthContext();
   const { products } = useProductsContext();
-  const [outData, setoutData] = useState(null);
+  const [dataOut, setoutData] = useState(null);
 
   useFetchProducts(user);
 
@@ -63,21 +73,16 @@ const MonthOut = () => {
     .filter((sum) => sum !== 0);
 
   useEffect(() => {
-    const chartOut = {
-      labels: filteredProductSumOut?.map((product) => product.name),
-      datasets: [
-        {
-          label: "OUT",
-          data: [...sums],
-          backgroundColor: "red",
-          borderColor: "black",
-          borderWidth: 2,
-        },
-      ],
-    };
-    setoutData(chartOut);
-  }, [selectedDate]); 
-  
+    const data = products?.map((product) => {
+      const sumOut = product.out.reduce((total, item) => {
+        const outValue = item.split("@")[0];
+        return total + parseInt(outValue, 10);
+      }, 0);
+      return { name: product.name, out: sumOut };
+    });
+    setoutData(data);
+  }, [selectedDate]);
+
   return (
     <>
       <select
@@ -116,7 +121,20 @@ const MonthOut = () => {
         </tbody>
       </table>
       <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
-        {/* {outData && <OutChart outData={outData} />} */}
+        {/* {dataOut && <OutChart dataOut={dataOut} />} */}
+        <div style={{ width: "100%", height: "300px" }}>
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={dataOut}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis dataKey="out" />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="out" fill="#E27396" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+        
       </div>
     </>
   );

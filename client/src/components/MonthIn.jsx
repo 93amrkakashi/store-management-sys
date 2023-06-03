@@ -4,7 +4,17 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { format } from "date-fns";
 import { useFetchProducts } from "../hooks/fetchProducts";
 import InChart from "./InChart";
-
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 const MonthIn = () => {
   const { user } = useAuthContext();
   const { products } = useProductsContext();
@@ -48,7 +58,6 @@ const MonthIn = () => {
     )
   );
 
-
   const filteredProductSumin = productSumin?.filter((product) =>
     product.date.includes(selectedDate)
   );
@@ -65,19 +74,14 @@ const MonthIn = () => {
     .filter((sum) => sum !== 0);
 
   useEffect(() => {
-    const chartin = {
-      labels: filteredProductSumin?.map((product) => product.name),
-      datasets: [
-        {
-          label: "in",
-          data: [...sums],
-          backgroundColor: "red",
-          borderColor: "black",
-          borderWidth: 2,
-        },
-      ],
-    };
-    setinData(chartin);
+    const data = products?.map((product) => {
+      const sumIn = product.in.reduce((total, item) => {
+        const outValue = item.split("@")[0];
+        return total + parseInt(outValue, 10);
+      }, 0);
+      return { name: product.name, in: sumIn };
+    });
+    setinData(data);
   }, [selectedDate]);
 
   return (
@@ -118,7 +122,18 @@ const MonthIn = () => {
         </tbody>
       </table>
       <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
-        {/* {inData && <InChart inData={inData} />} */}
+        <div style={{ width: "100%", height: "300px" }}>
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={inData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis dataKey="in" />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="in" fill="#E27396" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </>
   );

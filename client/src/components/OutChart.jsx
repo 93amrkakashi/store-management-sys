@@ -1,11 +1,29 @@
-import React from "react";
-import { Bar } from "react-chartjs-2";
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
-function OutChart({ outData }) {
+function OutChart({ dataOut }) {
   return (
-    <>
-      <Bar className="min-w-full bg-gray-200" data={outData} />;
-    </>
+    <div style={{ width: '100%', height: '300px' }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart data={dataOut}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="date" />
+          <YAxis dataKey="OUT" />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="OUT" fill="#E27396" />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 }
 

@@ -38,21 +38,23 @@ const Home = () => {
         setadd={setadd}
         add={add}
       />
-      {user.admin && (
-        <>
-          <ProductsTable
-            fetchProducts={fetchProducts}
-            products={products}
-            filterdProducts={filterdProducts}
-            setFelterdProducts={setFelterdProducts}
-          />
-          <ProductForm
-            add={add}
-            setadd={setadd}
-            fetchProducts={fetchProducts}
-          />
-        </>
-      )}
+      <div className="flex flex-col">
+        {user.admin && (
+          <>
+            <ProductsTable
+              fetchProducts={fetchProducts}
+              products={products}
+              filterdProducts={filterdProducts}
+              setFelterdProducts={setFelterdProducts}
+            />
+            <ProductForm
+              add={add}
+              setadd={setadd}
+              fetchProducts={fetchProducts}
+            />
+          </>
+        )}
+      </div>
     </div>
   );
 };

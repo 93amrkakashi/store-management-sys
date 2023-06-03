@@ -29,12 +29,12 @@ const ProductDetails = () => {
   const dataOut = product?.out?.map((item) => {
     const [value, date, creator] = item.split("@");
     const formattedDate = format(new Date(date), "dd-MM-yyyy");
-    return { date: formattedDate, in: product.in[0].split("@")[0], out: value };
+    return { date: formattedDate, in: product.in[0].split("@")[0], OUT: value };
   });
   const dataIn = product?.in?.map((item) => {
     const [value, date, creator] = item.split("@");
     const formattedDate = format(new Date(date), "dd-MM-yyyy");
-    return { date: formattedDate, in: product.in[0].split("@")[0], out: value };
+    return { date: formattedDate, IN: product.in[0].split("@")[0], OUT: value };
   });
   const fetchProduct = async () => {
     try {
