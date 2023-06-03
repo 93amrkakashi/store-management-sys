@@ -25,21 +25,21 @@ const SubNav = ({
     fetchProducts();
   };
   return (
-    <nav className="bg-gray-900 py-4 px-6 flex justify-between items-center">
+    <nav className="bg-gray-900 py-4 px-6 flex flex-wrap justify-between items-center">
       <button
         onClick={() => setadd(!add)}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 sm:mb-0"
       >
         Add a Product
       </button>
       <button
         onClick={handleRefresh}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2 sm:ml-4"
       >
         <FaSync />
       </button>
-      <div className="flex items-center">
-        <div className="mr-4 flex items-center">
+      <div className="flex items-center ml-2 sm:ml-4 mt-2 sm:mt-0">
+        <div className="mr-2 sm:mr-4 flex items-center">
           <form onSubmit={handleSearchChange}>
             <input
               name="inbut"
@@ -47,7 +47,7 @@ const SubNav = ({
               onChange={(e) => setSearchValue(e.target.value)}
               type="text"
               placeholder="Search"
-              className="bg-gray-800 text-white py-2 px-4 rounded-lg focus:outline-none"
+              className="bg-gray-800 text-white py-2 px-4 rounded-lg focus:outline-none w-32 sm:w-40"
             />
             <button className="text-gray-500 ml-2" type="submit">
               <FaSearch />
