@@ -16,11 +16,11 @@ const Users = () => {
   }, []);
 
   return (
-    <div className="min-w-full h-full overflow-y-scroll p-3 flex  justify-center flex-wrap gap-5">
+    <div className="min-w-full h-full overflow-y-scroll p-3 flex  justify-around flex-wrap gap-5 bg-gray-800">
       {user.owner ? (
         <>
           {users.map((user) => (
-            <Link className='bg-gray-700 px-2 py-4 rounded-md w-2/3 md:w-3/12 text-white text-center' key={user._id} to={`/admin/users/${user._id}`}>
+            <Link className='bg-gray-900 px-2 py-4 rounded-md w-2/3 md:w-3/12 text-white text-center m-5' key={user._id} to={`/admin/users/${user._id}`}>
               <div >
                 <h2 className="text-lg font-bold mb-2">
                   {`Name : ${user.firstName} ${user.lastName}`}

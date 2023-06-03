@@ -55,7 +55,7 @@ const ProductForm = ({ add, setadd, fetchProducts }) => {
 
   return (
     <form
-      className={`absolute transition-all duration-500  left-1/2 transform -translate-x-1/2  w-[50%] bg-gray-800 p-4 rounded-lg text-white ${
+      className={`absolute transition-all duration-500  left-1/2 transform -translate-x-1/2  w-[50%] bg-gray-900 p-4 rounded-lg text-white ${
         add ? "flex top-[30%] " : "hidden top-[-50%]"
       } flex-col gap-2`}
       onSubmit={handleSubmit}
@@ -68,7 +68,7 @@ const ProductForm = ({ add, setadd, fetchProducts }) => {
         type="text"
         onChange={(e) => setname(e.target.value)}
         value={name}
-        className="bg-gray-700 text-white py-2 px-4 rounded-lg"
+        className="bg-white text-black py-2 px-4 rounded-lg"
       />
 
       <label>Quantity:</label>
@@ -77,7 +77,7 @@ const ProductForm = ({ add, setadd, fetchProducts }) => {
         type="number"
         onChange={(e) => setinitQty(e.target.value)}
         value={initQty}
-        className="bg-gray-700 text-white py-2 px-4 rounded-lg"
+        className="bg-white text-black py-2 px-4 rounded-lg"
       />
 
       <label>description:</label>
@@ -86,7 +86,7 @@ const ProductForm = ({ add, setadd, fetchProducts }) => {
         type="text"
         onChange={(e) => setdescription(e.target.value)}
         value={description}
-        className="bg-gray-700 text-white py-2 px-4 rounded-lg"
+        className="bg-white text-black py-2 px-4 rounded-lg"
       />
 
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
