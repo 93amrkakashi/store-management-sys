@@ -82,13 +82,13 @@ const MonthOut = () => {
     });
     setoutData(data);
   }, [selectedDate]);
-
+console.log(filteredProductSumOut);
   return (
     <>
       <select
         value={selectedDate}
         onChange={handleDateChange}
-        className="block mt-4 mb-6 px-4 py-2 rounded-md bg-gray-700 text-white"
+        className="mx-auto block mt-4 mb-6 px-4 font-bold py-2 rounded-md bg-gray-900 text-white"
       >
         <option value="">Select A Month</option>
         {uniqueDates.map((date, index) => (
@@ -104,18 +104,18 @@ const MonthOut = () => {
             <th className="px-4 py-2 border-b border-l border-t w-5/12	">
               Name
             </th>
-            <th className="px-4 py-2 border-b border-l border-t w-1/12">
+            <th className="text-center px-4 py-2 border-b border-l border-t w-1/12">
               Available
             </th>
-            <th className="px-4 py-2 border-b border-l border-t w-1/12">OUT</th>
+            <th className="text-center px-4 py-2 border-b border-l border-t border-r w-1/12">OUT</th>
           </tr>
         </thead>
         <tbody>
           {filteredProductSumOut?.map((product, index) => (
             <tr key={index}>
               <td className="px-4 py-2 border-b border-l">{product.name}</td>
-              <td className="px-4 py-2 border-b border-l">{product.currQty}</td>
-              <td className="px-4 py-2 border-b border-l">{sums[index]}</td>
+              <td className="text-center px-4 py-2 border-b border-l">{product.currQty}</td>
+              <td className="text-center px-4 py-2 border-b border-l border-r">{sums[index]}</td>
             </tr>
           ))}
         </tbody>
@@ -130,7 +130,7 @@ const MonthOut = () => {
               <YAxis dataKey="out" />
               <Tooltip />
               <Legend />
-              <Bar dataKey="out" fill="#E27396" />
+              <Bar dataKey="out" fill="#1d4ed8" />
             </BarChart>
           </ResponsiveContainer>
         </div>

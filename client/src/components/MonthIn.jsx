@@ -89,7 +89,7 @@ const MonthIn = () => {
       <select
         value={selectedDate}
         onChange={handleDateChange}
-        className="block mt-4 mb-6 px-4 py-2 rounded-md bg-gray-700 text-white"
+        className="mx-auto block mt-4 mb-6 px-4 font-bold py-2 rounded-md bg-gray-900 text-white"
       >
         <option value="">Select A Month</option>
         {uniqueDates.map((date, index) => (
@@ -106,18 +106,18 @@ const MonthIn = () => {
             <th className="px-4 py-2 border-b border-l border-t w-5/12">
               Name
             </th>
-            <th className="px-4 py-2 border-b border-l border-t w-1/12">
+            <th className="text-center px-4 py-2 border-b border-l border-t w-1/12">
               Available
             </th>
-            <th className="px-4 py-2 border-b border-l border-t w-1/12">IN</th>
+            <th className="text-center px-4 py-2 border-b border-l border-t border-r w-1/12">IN</th>
           </tr>
         </thead>
         <tbody>
           {filteredProductSumin?.map((product, index) => (
             <tr key={index}>
               <td className="px-4 py-2 border-b border-l">{product.name}</td>
-              <td className="px-4 py-2 border-b border-l">{product.currQty}</td>
-              <td className="px-4 py-2 border-b border-l">{sums[index]}</td>
+              <td className="text-center px-4 py-2 border-b border-l">{product.currQty}</td>
+              <td className="text-center px-4 py-2 border-b border-l border-r">{sums[index]}</td>
             </tr>
           ))}
         </tbody>
@@ -131,7 +131,7 @@ const MonthIn = () => {
               <YAxis dataKey="in" />
               <Tooltip />
               <Legend />
-              <Bar dataKey="in" fill="#E27396" />
+              <Bar dataKey="in" fill="#1d4ed8" />
             </BarChart>
           </ResponsiveContainer>
         </div>
