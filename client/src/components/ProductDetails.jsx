@@ -6,7 +6,6 @@ import { format } from "date-fns";
 import { url } from "../const";
 import {
 
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 import InChart from "./InChart";
