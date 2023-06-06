@@ -5,8 +5,7 @@ import ProductTable from "./ProductTable";
 import { format } from "date-fns";
 import { url } from "../const";
 import {
-  YAxis,
-  Tooltip,
+
   Legend,
   ResponsiveContainer,
 } from "recharts";
