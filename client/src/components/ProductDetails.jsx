@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useParams } from "react-router-dom";
-// import InChart from "./InChart";
 import ProductTable from "./ProductTable";
 import { format } from "date-fns";
 import { url } from "../const";
