@@ -7,7 +7,6 @@ import ProductTable from "./ProductTable";
 import { format } from "date-fns";
 import { url } from "../const";
 import {
-  Cell,
   XAxis,
   YAxis,
   Tooltip,
