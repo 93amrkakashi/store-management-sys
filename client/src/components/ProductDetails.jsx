@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useParams } from "react-router-dom";
+// import OutChart from "./OutChart";
+// import InChart from "./InChart";
 import ProductTable from "./ProductTable";
 import { format } from "date-fns";
 import { url } from "../const";
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 import InChart from "./InChart";
 import OutChart from "./OutChart";
 const ProductDetails = () => {
