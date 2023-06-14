@@ -6,17 +6,6 @@ import { useParams } from "react-router-dom";
 import ProductTable from "./ProductTable";
 import { format } from "date-fns";
 import { url } from "../const";
-import {
-  BarChart,
-  Bar,
-  Cell,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
 import InChart from "./InChart";
 import OutChart from "./OutChart";
 const ProductDetails = () => {
