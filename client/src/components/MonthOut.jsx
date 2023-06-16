@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { format } from "date-fns";
-import OutChart from "./OutChart";
 import { useFetchProducts } from "../hooks/fetchProducts";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
