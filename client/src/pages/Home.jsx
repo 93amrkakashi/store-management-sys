@@ -30,7 +30,7 @@ const Home = () => {
 
   return (
     <div className="min-w-full h-full overflow-y-scroll p-3 bg-gray-800">
-      {user.admin=== 'true' && (
+      {user.admin === 'true' && (
       <SubNav
         fetchProducts={fetchProducts}
         products={products}
@@ -40,7 +40,7 @@ const Home = () => {
         add={add}
       />)}
       <div className="flex flex-col">
-        {user.admin=== 'true' && (
+        {user.admin=== 'true' ? (
           <>
             <ProductsTable
               fetchProducts={fetchProducts}
@@ -54,7 +54,7 @@ const Home = () => {
               fetchProducts={fetchProducts}
             />
           </>
-        )}
+        ): <h1 className="text-3xl mb-4 text-center text-white font-bold"> You Must Be An Admin To Work Here !!!</h1> }
       </div>
     </div>
   );
