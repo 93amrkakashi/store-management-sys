@@ -80,7 +80,7 @@ const MonthOut = () => {
     });
     setoutData(data);
   }, [selectedDate]);
-console.log(filteredProductSumOut);
+  console.log(filteredProductSumOut);
   return (
     <>
       <select
@@ -95,46 +95,55 @@ console.log(filteredProductSumOut);
           </option>
         ))}
       </select>
-      {selectedDate && <>
-      <table className="min-w-full bg-gray-800 text-white text-left ">
-        <thead>
-          <tr>
-            <th className="px-4 py-2 border-b border-l border-t w-5/12	">
-              Name
-            </th>
-            <th className="text-center px-4 py-2 border-b border-l border-t w-1/12">
-              Available
-            </th>
-            <th className="text-center px-4 py-2 border-b border-l border-t border-r w-1/12">OUT</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredProductSumOut?.map((product, index) => (
-            <tr key={index}>
-              <td className="px-4 py-2 border-b border-l">{product.name}</td>
-              <td className="text-center px-4 py-2 border-b border-l">{product.currQty}</td>
-              <td className="text-center px-4 py-2 border-b border-l border-r">{sums[index]}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
-        {/* {dataOut && <OutChart dataOut={dataOut} />} */}
-        <div style={{ width: "100%", height: "300px" }}>
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={dataOut}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis dataKey="out" />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="out" fill="#1d4ed8" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-        
-      </div>
-      </>}
+      {selectedDate && (
+        <>
+          <table className="min-w-full bg-gray-800 text-white text-left ">
+            <thead>
+              <tr>
+                <th className="px-4 py-2 border-b border-l border-t w-5/12	">
+                  Name
+                </th>
+                <th className="text-center px-4 py-2 border-b border-l border-t w-1/12">
+                  Available
+                </th>
+                <th className="text-center px-4 py-2 border-b border-l border-t border-r w-1/12">
+                  OUT
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredProductSumOut?.map((product, index) => (
+                <tr key={index}>
+                  <td className="px-4 py-2 border-b border-l">
+                    {product.name}
+                  </td>
+                  <td className="text-center px-4 py-2 border-b border-l">
+                    {product.currQty}
+                  </td>
+                  <td className="text-center px-4 py-2 border-b border-l border-r">
+                    {sums[index]}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="charts flex flex-col gap-2 min-w-full mx-auto px-4 py-8 text-white">
+            {/* {dataOut && <OutChart dataOut={dataOut} />} */}
+            <div style={{ width: "100%", height: "300px" }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={dataOut}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis dataKey="out" />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="out" fill="#1d4ed8" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };
