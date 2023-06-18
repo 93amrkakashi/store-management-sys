@@ -3,11 +3,9 @@ import { useProductsContext } from "../hooks/useProductsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { format } from "date-fns";
 import { useFetchProducts } from "../hooks/fetchProducts";
-import InChart from "./InChart";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
