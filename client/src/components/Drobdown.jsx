@@ -2,10 +2,12 @@ import { useState } from "react";
 import {  useNavigate } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export const DropdownMenu = () => {
   const { logout } = useLogout();
   const navigate = useNavigate();
+  const { user } = useAuthContext();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -23,7 +25,7 @@ export const DropdownMenu = () => {
       </button>
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg">
-          <p
+          {user.owner=== 'true' && <p
             onClick={() => {
               navigate("/admin");
               handleToggle();
@@ -31,7 +33,7 @@ export const DropdownMenu = () => {
             className=" px-4 py-2 hover:bg-gray-100 cursor-pointer text-black"
           >
             Admin Panel
-          </p>
+          </p>}
           <p
             onClick={() => logout()}
             className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-black"

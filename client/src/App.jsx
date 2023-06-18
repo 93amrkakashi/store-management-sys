@@ -25,11 +25,11 @@ function App() {
               path="/"
               element={user?.admin ? <Home /> : <Navigate to="/login" />}
             />
-            <Route path="/admin" element={user?.owner && <Admin />} />
-            <Route path="/admin/users" element={user?.owner && <Users />} />
+            <Route path="/admin" element={user?.owner ? <Admin /> : <Navigate to="/" />} />
+            <Route path="/admin/users" element={user?.owner ? <Users /> : <Navigate to="/" />} />
             <Route
               path="/admin/charts"
-              element={user?.owner && <MainCharts />}
+              element={user?.owner ? <MainCharts /> : <Navigate to="/" />}
             />
             <Route path="/products/:id" element={user && <ProductDetails />} />
             <Route
