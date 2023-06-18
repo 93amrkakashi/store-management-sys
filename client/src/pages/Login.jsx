@@ -13,10 +13,13 @@ const Login = () => {
   };
 
   return (
+    <>
+
     <form
       className="login bg-gray-800 text-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
       onSubmit={handleSubmit}
     >
+      <h3 className="text-2xl mb-4 text-center">Log In To Continue</h3>
       <h3 className="text-2xl mb-4">Log In</h3>
       <label className="block mb-2" htmlFor="email">
         Email address:
@@ -49,6 +52,7 @@ const Login = () => {
       </button>
       {error && <div className="error mt-4 text-red-500">{error}</div>}
     </form>
+    </>
   );
 };
 
