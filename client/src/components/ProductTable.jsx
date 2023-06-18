@@ -36,7 +36,7 @@ export const TableP = ({ product, title }) => {
                       new Date(item.split("@")[1]),
                       "'on' EEEE - dd/MM/yyyy - 'at' hh:mm a"
                     )}
-                  </td>{" "}
+                  </td> 
                   {/* <td className="px-4 py-2 border-b border-l">Quantity In Value</td> */}
                   <td className="px-4 py-2 border-b border-l">
                     {item.split("@")[0]}

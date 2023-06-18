@@ -65,15 +65,15 @@ const ProductDetails = () => {
           <span className="font-semibold">Name:</span> {product.name}
         </p>
         <p className="mb-2">
-          <span className="font-semibold">Description:</span>{" "}
+          <span className="font-semibold">Description:</span> 
           {product.description}
         </p>
         <p className="mb-2">
-          <span className="font-semibold">Initial Quantity:</span>{" "}
+          <span className="font-semibold">Initial Quantity:</span> 
           {product.initQty}
         </p>
         <p className="mb-2">
-          <span className="font-semibold">Current Quantity:</span>{" "}
+          <span className="font-semibold">Current Quantity:</span> 
           {product.currQty}
         </p>
       </div>
