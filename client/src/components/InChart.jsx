@@ -9,12 +9,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-
 function InChart({ dataIn }) {
-  
-
   return (
-    <div style={{ width: '100%', height: '300px' }}>
+    <div style={{ width: "100%", height: "300px" }}>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={dataIn}>
           <CartesianGrid strokeDasharray="3 3" />
