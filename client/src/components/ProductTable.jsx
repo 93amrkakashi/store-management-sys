@@ -47,23 +47,24 @@ export const TableP = ({ product, title }) => {
                 </tr>
               ))
             : product.in.map((item, index) => (
-                <tr key={index}>
-                  <td className="px-4 py-2 border-b border-l">{index + 1}</td>
-                  <td className="px-4 py-2 border-b border-l">
-                    {format(
-                      new Date(item.split("@")[1][index]),
-                      "EEEE - dd/MM/yyyy - 'at' hh:mm a"
-                    )}
-                  </td>{" "}
-                  {/* <td className="px-4 py-2 border-b border-l">Quantity In Value</td> */}
-                  <td className="px-4 py-2 border-b border-l">
-                    {item.split("@")[0]}
-                  </td>
-                  <td className="px-4 py-2 border-b border-l">
-                    {item.split("@")[2]}
-                  </td>
-                </tr>
-              ))}
+              <tr key={index}>
+                <td className="px-4 py-2 border-b border-l">{index + 1}</td>
+                <td className="px-4 py-2 border-b border-l">
+                  {format(
+                    new Date(item.split("@")[1]),
+                    "EEEE - dd/MM/yyyy - 'at' hh:mm a"
+                  )}
+                </td>
+                {/* <td className="px-4 py-2 border-b border-l">Quantity In Value</td> */}
+                <td className="px-4 py-2 border-b border-l">
+                  {item.split("@")[0]}
+                </td>
+                <td className="px-4 py-2 border-b border-l">
+                  {item.split("@")[2]}
+                </td>
+              </tr>
+            ))}
+            
         </tbody>
       </table>
     </div>
